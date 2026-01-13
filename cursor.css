@@ -1,0 +1,306 @@
+/* ============================================
+   CURSOR STYLES - OPTIMIZED & FIXED
+   ============================================ */
+
+/* Desktop Cursor Only */
+@media (hover: hover) and (pointer: fine) {
+    /* Cursor Base Styles */
+    .cursor {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        mix-blend-mode: difference;
+    }
+
+    .cursor-outer {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #00ff88;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.08s ease-out;
+        box-shadow: 
+            0 0 20px #00ff88,
+            0 0 40px #00ff88,
+            inset 0 0 20px rgba(0, 255, 136, 0.3);
+        animation: pulse 2s infinite alternate;
+    }
+
+    .cursor-inner {
+        width: 8px;
+        height: 8px;
+        background: #00ff88;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s, background 0.3s;
+        box-shadow: 
+            0 0 10px #00ff88,
+            0 0 20px #00ff88;
+    }
+
+    .cursor-follower {
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(0, 255, 136, 0.5);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease-out;
+        animation: rotate 20s linear infinite;
+    }
+
+    .cursor-trail {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at var(--x) var(--y), 
+            rgba(0, 255, 136, 0.05) 0%, 
+            rgba(0, 136, 255, 0.03) 10%,
+            transparent 20%);
+        opacity: 0.5;
+        transition: background 0.1s;
+    }
+
+    /* Hover Effects */
+    .cursor-hover:hover ~ .cursor-outer {
+        width: 60px;
+        height: 60px;
+        border-color: #0088ff;
+        background: rgba(0, 136, 255, 0.1);
+        box-shadow: 
+            0 0 30px #0088ff,
+            0 0 60px #0088ff,
+            inset 0 0 30px rgba(0, 136, 255, 0.3);
+    }
+
+    .cursor-hover:hover ~ .cursor-inner {
+        width: 12px;
+        height: 12px;
+        background: #0088ff;
+        box-shadow: 
+            0 0 15px #0088ff,
+            0 0 30px #0088ff;
+    }
+
+    .cursor-hover:hover ~ .cursor-follower {
+        width: 30px;
+        height: 30px;
+        border-color: rgba(0, 136, 255, 0.8);
+        animation: rotate 10s linear infinite;
+    }
+
+    /* Button & Link Specific Hover */
+    button.cursor-hover:hover ~ .cursor-outer,
+    a.cursor-hover:hover ~ .cursor-outer {
+        border-color: #aa00ff;
+        box-shadow: 
+            0 0 25px #aa00ff,
+            0 0 50px #aa00ff,
+            inset 0 0 25px rgba(170, 0, 255, 0.3);
+    }
+
+    button.cursor-hover:hover ~ .cursor-inner,
+    a.cursor-hover:hover ~ .cursor-inner {
+        background: #aa00ff;
+        box-shadow: 
+            0 0 20px #aa00ff,
+            0 0 40px #aa00ff;
+    }
+
+    /* Form Input Specific Hover */
+    input.cursor-text:hover ~ .cursor-inner,
+    textarea.cursor-text:hover ~ .cursor-inner {
+        background: #ff8800;
+        box-shadow: 
+            0 0 15px #ff8800,
+            0 0 30px #ff8800;
+    }
+
+    /* Hide Default Cursor */
+    body, a, button, input, textarea, .menu-icon, .close-icon {
+        cursor: none !important;
+    }
+
+    /* Trail Particles */
+    .cursor-trail::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #00ff88;
+        border-radius: 50%;
+        animation: trail-particle 1s linear forwards;
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   MOBILE/TABLET DEVICES (Touch Screens)
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    .cursor,
+    .cursor-outer,
+    .cursor-inner,
+    .cursor-follower,
+    .cursor-trail {
+        display: none !important;
+    }
+    
+    body, a, button, input, textarea, .menu-icon, .close-icon {
+        cursor: auto !important;
+    }
+    
+    /* Better touch targets for mobile */
+    button, 
+    a, 
+    .menu-icon,
+    .close-icon,
+    .skill-tag,
+    .project-tech {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ============================================
+   ANIMATIONS (Defined Once)
+   ============================================ */
+
+@keyframes pulse {
+    0% {
+        box-shadow: 
+            0 0 20px #00ff88,
+            0 0 40px #00ff88,
+            inset 0 0 20px rgba(0, 255, 136, 0.3);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        box-shadow: 
+            0 0 30px #00ff88,
+            0 0 60px #00ff88,
+            inset 0 0 30px rgba(0, 255, 136, 0.5);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes trail-particle {
+    0% {
+        opacity: 1;
+        transform: translate(var(--trail-x), var(--trail-y)) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--trail-x) + 20px), calc(var(--trail-y) + 20px)) scale(0);
+    }
+}
+
+/* Click Effect (Works on all devices) */
+.click-effect {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #00ff88;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: click-ripple 0.6s ease-out forwards;
+}
+
+@keyframes click-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   FALLBACK FOR OLDER BROWSERS
+   ============================================ */
+
+/* If browser doesn't support media queries well */
+@media not (hover: hover) {
+    .cursor,
+    .cursor-outer,
+    .cursor-inner,
+    .cursor-follower,
+    .cursor-trail {
+        display: none !important;
+    }
+    
+    body, a, button, input, textarea {
+        cursor: auto !important;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .cursor-outer,
+    .cursor-inner,
+    .cursor-follower,
+    .cursor-trail,
+    .click-effect {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .cursor-outer {
+        box-shadow: 0 0 10px #00ff88;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Ensure cursor doesn't interfere with keyboard navigation */
+.cursor-outer:focus,
+.cursor-inner:focus,
+.cursor-follower:focus {
+    outline: 2px solid #00ff88;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .cursor-outer {
+        border: 2px solid #00ff00;
+        box-shadow: 0 0 20px #00ff00;
+    }
+    
+    .cursor-inner {
+        background: #00ff00;
+        box-shadow: 0 0 10px #00ff00;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .cursor,
+    .cursor-outer,
+    .cursor-inner,
+    .cursor-follower,
+    .cursor-trail {
+        display: none !important;
+    }
+}
