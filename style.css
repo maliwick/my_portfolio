@@ -1497,6 +1497,7 @@ header ul a:hover {
         height: -webkit-fill-available;
         padding-bottom: env(safe-area-inset-bottom);
     }
+<<<<<<< HEAD
 }
 
 /* ============================================
@@ -1613,4 +1614,6 @@ button:disabled:hover {
     .social-box {
         display: block !important;
     }
+=======
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 }

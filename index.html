@@ -8,10 +8,13 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="cursor.css">
+<<<<<<< HEAD
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+=======
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -22,7 +25,11 @@
     <!-- Cursor Trail Effect -->
     <div class="cursor-trail"></div>
     
+<<<<<<< HEAD
     <!-- Sidebar Overlay -->
+=======
+    <!-- Sidebar Overlay (Fixed: Added for mobile) -->
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
     <div class="sidebar-overlay"></div>
 
     <div class="container">
@@ -57,15 +64,25 @@
                 <a href="https://www.linkedin.com/in/thisaramalinga523cyber" target="_blank" class="cursor-hover"><i class='bx bxl-linkedin-square'></i></a>
             </div>
 
+<<<<<<< HEAD
             <!-- Mobile Menu Button -->
+=======
+            <!-- Mobile Menu Button (Fixed: Added aria-label) -->
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
             <div class="menu-icon cursor-hover" id="mobileMenuToggle" aria-label="Open menu">
                 <i class='bx bx-menu'></i>
             </div>            
         </header>
 
+<<<<<<< HEAD
         <!-- Mobile Sidebar -->
         <div class="sidebar" id="mobileSidebar">
             <!-- Close Button -->
+=======
+        <!-- Mobile Sidebar (Fixed: Added id for JS) -->
+        <div class="sidebar" id="mobileSidebar">
+            <!-- Close Button (Fixed: Added id for JS) -->
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
             <div class="close-icon cursor-hover" id="mobileMenuClose" aria-label="Close menu">
                 <i class='bx bx-x'></i>
             </div>
@@ -121,6 +138,11 @@
                     <p>IT Experience</p>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+
+            <!-- <div class="scroll-down cursor-hover"></div> -->
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
         </section>
 
         <section class="info-section" id="about">
@@ -327,11 +349,15 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- Contact Form -->
+=======
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
                 <div class="contact-box autoBlur cursor-hover">
                     <h2>Quick Message</h2>
                     <p>Looking for an internship in cyber security. Interested in network security, threat analysis, and penetration testing opportunities.</p>
                 
+<<<<<<< HEAD
                     <form id="contactForm">
                         <!-- Hidden honeypot field for spam -->
                         <input type="text" name="website" style="display: none;">
@@ -354,6 +380,21 @@
                         
                         <div id="formMessage" style="margin-top: 15px; display: none;"></div>
                     </form>
+=======
+                    <div class="form-group">
+                        <input placeholder="Your Name" type="text" class="cursor-text">
+                    </div>
+
+                    <div class="form-group">
+                        <input placeholder="Your Email" type="email" class="cursor-text">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea placeholder="Your message regarding security opportunities..." rows="4" class="cursor-text"></textarea>
+                    </div>
+
+                    <button class="cursor-hover">Send Message <i class='bx bx-mail-send'></i></button>
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
                 </div>
             </div>
         </section> 
@@ -380,12 +421,17 @@
             <h1>©️ 2024 M.T. Malinga | Cyber Security Portfolio</h1>
             <div class="box-icons">
                 <a href="https://github.com/maliwick" target="_blank" class="cursor-hover"><i class='bx bxl-github'></i></a>
+<<<<<<< HEAD
                 <a href="https://www.linkedin.com/in/thisaramalinga523cyber" target="_blank" class="cursor-hover"><i class='bx bxl-linkedin-square"></i></a>
+=======
+                <a href="https://www.linkedin.com/in/thisaramalinga523cyber" target="_blank" class="cursor-hover"><i class='bx bxl-linkedin-square'></i></a>
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
                 <a href="mailto:malingawelagedara525@gmail.com" class="cursor-hover"><i class='bx bx-envelope'></i></a>
             </div>
         </footer>
     </div>
 
+<<<<<<< HEAD
     <!-- Load external JS files -->
     <script src="app.js"></script>
     <script src="cursor.js"></script>
@@ -411,5 +457,153 @@
             console.log('Container element:', document.querySelector('.container'));
         });
     </script>
+=======
+    <script>
+        // Simple mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - initializing mobile menu...');
+            
+            // Get elements
+            const menuIcon = document.querySelector('.menu-icon');
+            const closeIcon = document.querySelector('.close-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+            
+            console.log('Elements found:', {
+                menuIcon: !!menuIcon,
+                closeIcon: !!closeIcon,
+                sidebar: !!sidebar,
+                overlay: !!overlay
+            });
+            
+            // Function to open sidebar
+            function openSidebar() {
+                console.log('Opening sidebar');
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                body.style.overflow = 'hidden';
+            }
+            
+            // Function to close sidebar
+            function closeSidebar() {
+                console.log('Closing sidebar');
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            }
+            
+            // Event listeners
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    openSidebar();
+                });
+            }
+            
+            if (closeIcon) {
+                closeIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    closeSidebar();
+                });
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    closeSidebar();
+                });
+            }
+            
+            // Close sidebar when clicking on links
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    closeSidebar();
+                });
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            });
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Close sidebar if open
+                        closeSidebar();
+                        
+                        // Calculate scroll position
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        // Smooth scroll
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form handling
+            const contactForm = document.querySelector('.contact-box');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = this.querySelector('input[type="text"]')?.value;
+                    const email = this.querySelector('input[type="email"]')?.value;
+                    const message = this.querySelector('textarea')?.value;
+                    
+                    if (!name || !email || !message) {
+                        alert('Please fill in all fields.');
+                        return;
+                    }
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                });
+            }
+            
+            console.log('Mobile menu initialized successfully');
+        });
+        
+        // Initialize AOS
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+        }
+    </script>
+    
+    <!-- Load external JS files -->
+    <script src="app.js" defer></script>
+    <script src="cursor.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+>>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 </body>
 </html>
