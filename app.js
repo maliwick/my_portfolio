@@ -1,9 +1,5 @@
 // ============================================
-<<<<<<< HEAD
-// MOBILE MENU FUNCTIONALITY - SIMPLIFIED
-=======
 // MOBILE MENU FUNCTIONALITY - SIMPLIFIED & FIXED
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     const body = document.body;
     
-<<<<<<< HEAD
-=======
     // Debug: Check if elements exist
     console.log('Menu elements found:', {
         menuIcon: !!menuIcon,
@@ -24,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar: !!sidebar
     });
     
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
     // Create overlay for mobile
     const overlay = document.createElement('div');
     overlay.className = 'sidebar-overlay';
@@ -46,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ========== EVENT LISTENERS ==========
-<<<<<<< HEAD
+    // Open sidebar when menu icon is clicked
     if (menuIcon) {
         menuIcon.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -55,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Close sidebar when close icon is clicked
     if (closeIcon) {
         closeIcon.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -63,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Close sidebar when overlay is clicked
     if (overlay) {
         overlay.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -70,28 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeSidebar();
         });
     }
-=======
-    // Open sidebar when menu icon is clicked
-    menuIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        openSidebar();
-    });
-    
-    // Close sidebar when close icon is clicked
-    closeIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        closeSidebar();
-    });
-    
-    // Close sidebar when overlay is clicked
-    overlay.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        closeSidebar();
-    });
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
     
     // Close sidebar when clicking on links
     const sidebarLinks = document.querySelectorAll('.sidebar a');
@@ -113,10 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             
-<<<<<<< HEAD
-=======
             // Skip if it's just '#'
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
@@ -128,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeSidebar();
                 
                 // Calculate scroll position
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 70;
                 const targetPosition = targetElement.offsetTop - headerHeight;
                 
                 // Smooth scroll to target
@@ -140,13 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-<<<<<<< HEAD
-=======
     // ========== FORM HANDLING ==========
-    const contactForm = document.querySelector('.contact-box');
-    if (contactForm) {
-        // Find the actual form or use the contact-box itself
-        const form = contactForm.querySelector('form') || contactForm;
+    const contactBox = document.querySelector('.contact-box');
+    if (contactBox) {
+        // Find the form inside contact-box
+        const form = contactBox.querySelector('form') || contactBox;
         
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -175,12 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
     // ========== HEADER SCROLL EFFECT ==========
     let lastScrollTop = 0;
     const header = document.querySelector('header');
     
-<<<<<<< HEAD
     if (header) {
         window.addEventListener('scroll', function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -194,33 +161,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 header.style.backdropFilter = 'blur(10px)';
             }
             
+            // Hide/show header on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down - hide header
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up - show header
+                header.style.transform = 'translateY(0)';
+            }
+            
             lastScrollTop = scrollTop;
         });
     }
-=======
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Add/remove background on scroll
-        if (scrollTop > 50) {
-            header.style.backgroundColor = 'rgba(16, 16, 32, 0.95)';
-            header.style.backdropFilter = 'blur(20px)';
-        } else {
-            header.style.backgroundColor = 'rgba(16, 16, 32, 0.9)';
-            header.style.backdropFilter = 'blur(10px)';
-        }
-        
-        // Hide/show header on scroll
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down - hide header
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up - show header
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
     
     // ========== HOVER EFFECTS ==========
     // Skill tags hover
@@ -264,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = '';
         });
     });
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
     
     // ========== RESIZE HANDLER ==========
     let resizeTimer;
@@ -278,11 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
     
-<<<<<<< HEAD
-    console.log('✅ Mobile menu initialized successfully');
-    console.log('✅ Header visible:', !!document.querySelector('header'));
-    console.log('✅ Container visible:', !!document.querySelector('.container'));
-=======
     // ========== INITIALIZE AOS ==========
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -295,7 +241,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    console.log('Mobile menu initialized successfully');
+    console.log('✅ Mobile menu initialized successfully');
+    console.log('✅ Header visible:', !!document.querySelector('header'));
+    console.log('✅ Container visible:', !!document.querySelector('.container'));
 });
 
 // ============================================
@@ -420,5 +368,4 @@ window.addEventListener('load', function() {
             stat.textContent = Math.floor(current);
         }, 20);
     });
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 });

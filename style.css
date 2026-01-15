@@ -1497,7 +1497,6 @@ header ul a:hover {
         height: -webkit-fill-available;
         padding-bottom: env(safe-area-inset-bottom);
     }
-<<<<<<< HEAD
 }
 
 /* ============================================
@@ -1572,31 +1571,6 @@ button:disabled:hover {
 }
 
 /* ============================================
-   FIREBASE TEST BUTTON (Remove in production)
-   ============================================ */
-
-#firebaseTestBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background: var(--cyber-green);
-    color: var(--dark-bg);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 9999;
-    font-weight: bold;
-    box-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
-    transition: all 0.3s ease;
-}
-
-#firebaseTestBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.5);
-}
-
-/* ============================================
    PRINT STYLES (Keep contact info)
    ============================================ */
 
@@ -1614,6 +1588,4 @@ button:disabled:hover {
     .social-box {
         display: block !important;
     }
-=======
->>>>>>> 03e5270e3811ad2ea9862441012609d97170d66f
 }
