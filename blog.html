@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="close-icon" onclick="closeSidebar()">
+            <i class='bx bx-x'></i>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="social-sidebar">
+            <a href="https://github.com" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+        </div>
+    </nav>
+    
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="left">
+            <a href="index.html" class="logo-link cursor-hover">
+                <img src="image/hacker.png" alt="Logo" class="hacker-icon">
+                <h2>Cyber Dev</h2>
+            </a>
+        </div>
+        
+        <ul>
+            <li><a href="index.html" class="cursor-hover">Home</a></li>
+            <li><a href="index.html#about" class="cursor-hover">About</a></li>
+            <li><a href="index.html#skills" class="cursor-hover">Skills</a></li>
+            <li><a href="index.html#projects" class="cursor-hover">Projects</a></li>
+            <li><a href="index.html#experience" class="cursor-hover">Experience</a></li>
+            <li><a href="blog.html" class="cursor-hover" style="color: var(--cyber-green); border-bottom: 2px solid var(--cyber-green);">Blog</a></li>
+            <li><a href="index.html#contact" class="cursor-hover">Contact</a></li>
+        </ul>
+        
+        <div class="box-icons">
+            <a href="https://github.com" target="_blank" class="cursor-hover"><i class='bx bxl-github'></i></a>
+            <a href="https://linkedin.com" target="_blank" class="cursor-hover"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://twitter.com" target="_blank" class="cursor-hover"><i class='bx bxl-twitter'></i></a>
+        </div>
+        
+        <div class="menu-icon" onclick="openSidebar()">
+            <i class='bx bx-menu'></i>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section style="width: 100%; margin-top: 40px;">
+            <div class="blog-hero">
+                <h1 class="section-title">🔐 Cybersecurity Intelligence Hub</h1>
+                <p class="blog-subtitle">Stay informed about the latest security threats and best practices</p>
+            </div>
+            
+            <div class="blog-container">
+                <article class="blog-post cursor-hover">
+                    <div class="post-header">
+                        <h2>🛡️ Understanding Zero-Trust Security</h2>
+                        <div class="post-meta">
+                            <span>📅 January 15, 2024</span>
+                            <span>✍️ Security Team</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Zero-Trust Security is a modern approach that assumes no user or system can be trusted by default. Learn why this paradigm shift is essential for protecting your organization from advanced threats. This revolutionary approach eliminates the traditional perimeter-based security model and focuses on continuous verification.</p>
+                        <a href="blog-zero-trust.html" class="read-more">Read More →</a>
+                    </div>
+                    <div class="blog-post-footer">
+                        <div class="blog-tags">
+                            <span class="tag">🔑 Authentication</span>
+                            <span class="tag">🌐 Network Security</span>
+                            <span class="tag">🚀 Best Practices</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="blog-post cursor-hover">
+                    <div class="post-header">
+                        <h2>🔓 Top 5 Password Security Mistakes to Avoid</h2>
+                        <div class="post-meta">
+                            <span>📅 January 10, 2024</span>
+                            <span>✍️ Security Team</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Weak passwords are the #1 cause of data breaches. Discover the most common password mistakes and how to create stronger, more secure authentication practices. From using common phrases to reusing passwords across platforms, we'll cover everything you need to know about password security.</p>
+                        <a href="blog-password-security.html" class="read-more">Read More →</a>
+                    </div>
+                    <div class="blog-post-footer">
+                        <div class="blog-tags">
+                            <span class="tag">🔑 Password Security</span>
+                            <span class="tag">⚠️ Risk Management</span>
+                            <span class="tag">💡 Tips & Tricks</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="blog-post cursor-hover">
+                    <div class="post-header">
+                        <h2>🦠 Ransomware Prevention: A Complete Guide</h2>
+                        <div class="post-meta">
+                            <span>📅 January 5, 2024</span>
+                            <span>✍️ Security Team</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Ransomware attacks are increasing at an alarming rate. This comprehensive guide covers detection methods, prevention strategies, and incident response procedures. Learn how to protect your business from one of the most devastating cyber threats of our time.</p>
+                        <a href="blog-ransomware.html" class="read-more">Read More →</a>
+                    </div>
+                    <div class="blog-post-footer">
+                        <div class="blog-tags">
+                            <span class="tag">🚨 Threat Detection</span>
+                            <span class="tag">🛡️ Defense Strategy</span>
+                            <span class="tag">📋 Response Plan</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <h1>🔒 Cyber Dev | Building Secure Tomorrow</h1>
+    </footer>
+
+    <script>
+        function openSidebar() {
+            document.querySelector('.sidebar').classList.add('open');
+            document.getElementById('sidebarOverlay').classList.add('active');
+        }
+
+        function closeSidebar() {
+            document.querySelector('.sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+
+        // Close sidebar when clicking on a link
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    </script>
+</body>
+</html>
