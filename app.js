@@ -111,36 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== FORM HANDLING ==========
-    const contactBox = document.querySelector('.contact-box');
-    if (contactBox) {
-        // Find the form inside contact-box
-        const form = contactBox.querySelector('form') || contactBox;
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = this.querySelector('input[type="text"]')?.value;
-            const email = this.querySelector('input[type="email"]')?.value;
-            const message = this.querySelector('textarea')?.value;
-            
-            // Validation
-            if (!name || !email || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Success message
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
+    // ========== GOOGLE FORM BUTTON HANDLER ==========
+    const openFormBtn = document.getElementById('openFormBtn');
+    if (openFormBtn) {
+        openFormBtn.addEventListener('click', function() {
+            const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe7ljXMh9tY1eUcDzJSzB5jk_IT38F61FSNP3DHEGJW70o3vg/viewform';
+            window.open(formUrl, '_blank');
         });
     }
     

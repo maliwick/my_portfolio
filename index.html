@@ -10,14 +10,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="cursor.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
-    <!-- EmailJS -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script> -->
 
 </head>
 <body>
@@ -30,7 +22,7 @@
     <div class="cursor-trail"></div>
     
     <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay"></div>
+    <!-- <div class="sidebar-overlay"></div> -->
 
     <div class="container">
         <video class="back-vid" autoplay loop muted playsinline>
@@ -340,29 +332,10 @@
                 <div class="contact-box autoBlur cursor-hover">
                     <h2>Quick Message</h2>
                     <p>Looking for an internship in cyber security. Interested in network security, threat analysis, and penetration testing opportunities.</p>
-                
-                    <form id="contactForm">
-                        <!-- Hidden honeypot field for spam -->
-                        <input type="text" name="website" style="display: none;">
-                        
-                        <div class="form-group">
-                            <input id="name" name="name" placeholder="Your Name *" type="text" class="cursor-text" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="email" name="email" placeholder="Your Email *" type="email" class="cursor-text" required>
-                        </div>
-
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your message regarding security opportunities... *" rows="4" class="cursor-text" required></textarea>
-                        </div>
-
-                        <button type="submit" class="cursor-hover" id="submitBtn">
-                            <i class='bx bx-mail-send'></i> Send Message
-                        </button>
-                        
-                        <div id="formMessage" style="margin-top: 15px; display: none;"></div>
-                    </form>
+                    
+                    <button id="openFormBtn" class="cursor-hover" style="margin-top: 20px; padding: 12px 30px; background: linear-gradient(135deg, #1dec31, #0daa1d); color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
+                        <i class='bx bx-mail-send'></i> Send Message
+                    </button>
                 </div>
             </div>
         </section> 
@@ -399,9 +372,6 @@
     <script src="app.js"></script>
     <script src="cursor.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
-    <!-- Firebase Contact Form Handler -->
-    <script src="firebase-contact.js"></script>
     
     <script>
         // Initialize AOS
