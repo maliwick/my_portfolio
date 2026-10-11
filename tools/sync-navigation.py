@@ -31,4 +31,7 @@ for page in [*ROOT.glob('*.html'),ROOT/'business/index.html']:
     # Existing home hero has its own anchor; put the skip target on its container instead.
     text=text.replace('<section id="page-content" tabindex="-1" class="hero" id="home">','<section class="hero" id="home" tabindex="-1">')
     if 'id="page-content"' not in text:text=text.replace('<div class="container">','<div class="container" id="page-content" tabindex="-1">',1)
+    text=re.sub(r'<link[^>]*href="(?:\.\./)?cursor\.css"[^>]*>', '', text)
+    text=re.sub(r'<script[^>]*src="(?:\.\./)?cursor\.js"[^>]*>\s*</script>', '', text)
+    text=text.replace('</head>',f'<link rel="stylesheet" href="{prefix}cursor.css"><script src="{prefix}cursor.js" defer></script></head>')
     page.write_text(text)

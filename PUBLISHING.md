@@ -35,3 +35,9 @@ Open http://localhost:8000. A server is required because the portfolio fetches c
 ## Shared navigation
 
 All HTML pages use navigation.css and navigation.js. The static header and mobile dialog are generated from one menu definition in tools/sync-navigation.py. After changing that definition, run `python tools/sync-navigation.py` from the repository folder. The desktop menu switches to a modal sidebar at widths of 1240 px or below.
+
+## Background and cursor
+
+The homepage background uses background.css and background.js (no video downloads). Pause background stops both the ambient gradients and canvas network. Reduced-motion settings disable animation; animation also pauses in hidden tabs.
+
+Every page loads one shared cursor.css/cursor.js pair. The custom cursor activates only after a mouse move on a fine-pointer device, stays above the fixed menu, and moves inside the native modal sidebar when open. Touch, reduced motion, text fields, and select controls use the native cursor.
