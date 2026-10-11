@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useMedia, useRoute } from "./hooks.js";
 import { loadContent, resolveRoute, groups } from "./lib.js";
+import LoadingScreen from "./components/LoadingScreen.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Background from "./components/Background.jsx";
 import Cursor from "./components/Cursor.jsx";
@@ -32,9 +33,12 @@ export default function App() {
   const url = useRoute(),
     route = resolveRoute(url.pathname, url.search),
     [data, setData] = useState(null),
+    [loading, setLoading] = useState(true),
+    [settled, setSettled] = useState(false),
     [error, setError] = useState(""),
     [paused, setPaused] = useState(false),
     reduced = useMedia("(prefers-reduced-motion: reduce)");
+  const finishLoading = useCallback(() => setLoading(false), []);
   async function reload() {
     setError("");
     try {
@@ -47,10 +51,16 @@ export default function App() {
     let cancelled = false;
     loadContent()
       .then((d) => {
-        if (!cancelled) setData(d);
+        if (!cancelled) {
+          setData(d);
+          setSettled(true);
+        }
       })
       .catch((e) => {
-        if (!cancelled) setError(e.message);
+        if (!cancelled) {
+          setError(e.message);
+          setSettled(true);
+        }
       });
     return () => {
       cancelled = true;
@@ -139,45 +149,54 @@ export default function App() {
     );
   return (
     <>
-      {route.page === "home" && <Background paused={paused} />}
-      <Navigation url={url} />
-      <main
-        id="page-content"
-        tabIndex="-1"
-        className={
-          ["projects", "labs", "editor", "detail", "not-found"].includes(
-            route.page,
-          )
-            ? "work-page"
-            : undefined
-        }
-        key={url.pathname + url.search}
-      >
-        {content}
-      </main>
-      <footer className="shared-footer">
-        <span>
-          © {new Date().getFullYear()} M.T. Malinga · Cyber Security & IT
-        </span>
-        <div>
-          <a href="/editor.html">Content editor</a>
-          <a
-            href="https://github.com/maliwick"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub ↗
-          </a>
-          <a
-            href="https://www.linkedin.com/in/thisaramalinga523cyber/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn ↗
-          </a>
-        </div>
-      </footer>
-      <Cursor />
+      {loading && (
+        <LoadingScreen
+          ready={settled}
+          home={route.page === "home"}
+          onDone={finishLoading}
+        />
+      )}
+      <div id="site-shell" inert={loading} aria-busy={loading}>
+        {route.page === "home" && <Background paused={paused} />}
+        <Navigation url={url} />
+        <main
+          id="page-content"
+          tabIndex="-1"
+          className={
+            ["projects", "labs", "editor", "detail", "not-found"].includes(
+              route.page,
+            )
+              ? "work-page"
+              : undefined
+          }
+          key={url.pathname + url.search}
+        >
+          {content}
+        </main>
+        <footer className="shared-footer">
+          <span>
+            © {new Date().getFullYear()} M.T. Malinga · Cyber Security & IT
+          </span>
+          <div>
+            <a href="/editor.html">Content editor</a>
+            <a
+              href="https://github.com/maliwick"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+            <a
+              href="https://www.linkedin.com/in/thisaramalinga523cyber/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn ↗
+            </a>
+          </div>
+        </footer>
+      </div>
+      {!loading && <Cursor />}
     </>
   );
 }

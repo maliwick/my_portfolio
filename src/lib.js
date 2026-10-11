@@ -39,9 +39,22 @@ export function validateContent(data) {
   return data;
 }
 export async function loadContent() {
-  const r = await fetch("/data/content.json", { cache: "no-cache" });
-  if (!r.ok) throw new Error("Content could not be loaded.");
-  return validateContent(await r.json());
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const r = await fetch("/data/content.json", {
+      cache: "no-cache",
+      signal: controller.signal,
+    });
+    if (!r.ok) throw new Error("Content could not be loaded.");
+    return validateContent(await r.json());
+  } catch (error) {
+    if (controller.signal.aborted)
+      throw new Error("Content loading timed out. Please retry.");
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 export function publicItems(items, query = "") {
   const q = query.toLowerCase();

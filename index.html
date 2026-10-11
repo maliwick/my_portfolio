@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="site-loading">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -14,9 +14,77 @@
       as="image"
       href="/image/cybersecurity-background.webp"
     />
+    <style>
+      html.site-loading,
+      html.site-loading body {
+        overflow: hidden;
+      }
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        background: radial-gradient(ellipse at 50% 45%, #102a2a, #060e16 65%);
+        color: #e6edf6;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family:
+          Segoe UI,
+          sans-serif;
+      }
+      #boot-loader .boot-ring {
+        width: 68px;
+        height: 68px;
+        border: 1px solid #263e3a;
+        border-top-color: #7aefba;
+        border-radius: 50%;
+        margin: 0 auto 24px;
+        animation: boot-spin 1.5s linear infinite;
+      }
+      #boot-loader small {
+        color: #7aefba;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+      }
+      #boot-loader p {
+        font-size: 22px;
+        margin: 14px 0;
+      }
+      @keyframes boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #boot-loader .boot-ring {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-loader" role="status" aria-label="Loading portfolio">
+      <div>
+        <div class="boot-ring" aria-hidden="true"></div>
+        <small>M.T. MALINGA</small>
+        <p>Loading portfolio…</p>
+      </div>
+    </div>
     <div id="root"></div>
+    <noscript
+      ><style>
+        #boot-loader {
+          display: none;
+        }
+        html.site-loading,
+        html.site-loading body {
+          overflow: auto;
+        }
+      </style>
+      <p style="color: #e6edf6; background: #060e16; padding: 24px">
+        Please enable JavaScript to view this React portfolio.
+      </p></noscript
+    >
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

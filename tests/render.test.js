@@ -93,3 +93,26 @@ test("content is escaped and editor retains export and publishing instructions",
   assert(editor.includes("public/data/content.json"));
   assert(editor.includes("Download content.json"));
 });
+
+test("initial visit shows an accessible loader and makes the page inert", async () => {
+  const previousLocation = globalThis.location,
+    previousMedia = globalThis.matchMedia;
+  globalThis.location = { href: "https://example.com/index.html" };
+  globalThis.matchMedia = () => ({ matches: false });
+  try {
+    const { default: App } = await server.ssrLoadModule("/src/App.jsx");
+    const html = renderToStaticMarkup(React.createElement(App));
+    assert(html.includes('aria-label="Loading portfolio"'));
+    assert(html.includes('id="site-shell" inert="" aria-busy="true"'));
+    assert(html.includes("loading-emblem"));
+    const entry = fs.readFileSync(
+      new URL("../index.html", import.meta.url),
+      "utf8",
+    );
+    assert(entry.includes('id="boot-loader"'));
+    assert(/<noscript\s*>/.test(entry));
+  } finally {
+    globalThis.location = previousLocation;
+    globalThis.matchMedia = previousMedia;
+  }
+});
