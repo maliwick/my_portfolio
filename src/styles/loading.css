@@ -35,20 +35,20 @@ html.site-loading body {
   mask-image: radial-gradient(ellipse, black, transparent 75%);
 }
 .loading-panel {
-  width: min(380px, 100%);
+  width: min(560px, 100%);
   text-align: center;
 }
 .loading-emblem {
   position: relative;
-  width: 116px;
-  height: 116px;
-  margin: 0 auto 28px;
+  width: clamp(140px, 22vw, 176px);
+  height: clamp(140px, 22vw, 176px);
+  margin: 0 auto 36px;
   display: grid;
   place-items: center;
 }
 .loading-emblem svg {
-  width: 49px;
-  height: 56px;
+  width: clamp(64px, 10vw, 76px);
+  height: auto;
   color: #7aefba;
   filter: drop-shadow(0 0 10px #00ff8822);
   animation: loading-shield 2.4s ease-in-out infinite;
@@ -80,30 +80,30 @@ html.site-loading body {
 }
 .loading-kicker {
   letter-spacing: 0.23em;
-  font-size: 11px;
+  font-size: clamp(13px, 2.5vw, 15px);
   color: #7aefba;
   font-weight: 700;
   margin: 0 0 12px;
 }
 .loading-panel h1 {
-  font-size: clamp(22px, 5vw, 30px);
+  font-size: clamp(28px, 6vw, 42px);
   font-weight: 600;
   letter-spacing: -0.03em;
   margin: 0 0 14px;
   line-height: 1.2;
 }
 .loading-caption {
-  font-size: 12px;
+  font-size: clamp(14px, 2.8vw, 16px);
   color: #9daec2;
   margin: 0 0 28px;
   line-height: 1.6;
 }
 .loading-track {
-  height: 2px;
+  height: 4px;
   border-radius: 2px;
   background: #263646;
   overflow: hidden;
-  width: 220px;
+  width: 340px;
   max-width: 100%;
   margin: 0 auto 18px;
 }
@@ -115,7 +115,7 @@ html.site-loading body {
   animation: loading-travel 1.6s ease-in-out infinite;
 }
 .loading-code {
-  font: 9px/1.5 monospace;
+  font: clamp(11px, 2.2vw, 13px)/1.5 monospace;
   color: #668377;
   letter-spacing: 0.06em;
 }
