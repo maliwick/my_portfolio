@@ -41,3 +41,5 @@ All HTML pages use navigation.css and navigation.js. The static header and mobil
 The homepage background uses background.css and background.js (no video downloads). Pause background stops both the ambient gradients and canvas network. Reduced-motion settings disable animation; animation also pauses in hidden tabs.
 
 Every page loads one shared cursor.css/cursor.js pair. The custom cursor activates only after a mouse move on a fine-pointer device, stays above the fixed menu, and moves inside the native modal sidebar when open. Touch, reduced motion, text fields, and select controls use the native cursor.
+
+The homepage uses image/cybersecurity-background.webp, an AI-generated green/cyan shield and circuit-board illustration. CSS applies a slow zoom/drift and moving scan light. The same Pause background control and reduced-motion preferences stop those image animations.
