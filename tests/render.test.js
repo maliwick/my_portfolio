@@ -46,7 +46,7 @@ test("homepage preserves sections, badge samples, and motion controls", async ()
     "contact",
   ])
     assert(html.includes('id="' + id + '"'));
-  assert(html.includes("Pause background"));
+  assert(!html.includes("Pause background"));
   assert(html.includes("/projects.html"));
   assert(html.includes("SAMPLE / PLACEHOLDER"));
   assert(!/<a[^>]*><button/.test(html));

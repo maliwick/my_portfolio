@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-export default function Background({ paused }) {
+export default function Background() {
   const ref = useRef(null);
   useEffect(() => {
     const canvas = ref.current;
@@ -40,7 +40,7 @@ export default function Background({ paused }) {
     }
     function draw(now) {
       frame = 0;
-      if (paused || document.hidden || reduced.matches || !ctx) return;
+      if (document.hidden || reduced.matches || !ctx) return;
       frame = requestAnimationFrame(draw);
       if (now - last < 33) return;
       const dt = Math.min((now - last) / 33 || 1, 2);
@@ -90,9 +90,9 @@ export default function Background({ paused }) {
       frame = 0;
       document.body.classList.toggle(
         "background-paused",
-        paused || reduced.matches || document.hidden,
+        reduced.matches || document.hidden,
       );
-      if (!paused && !document.hidden && !reduced.matches && ctx) {
+      if (!document.hidden && !reduced.matches && ctx) {
         last = performance.now();
         frame = requestAnimationFrame(draw);
       }
@@ -108,7 +108,7 @@ export default function Background({ paused }) {
       document.removeEventListener("visibilitychange", sync);
       reduced.removeEventListener("change", sync);
     };
-  }, [paused]);
+  }, []);
   return (
     <div className="portfolio-backdrop" aria-hidden="true">
       <div className="cyber-image" />

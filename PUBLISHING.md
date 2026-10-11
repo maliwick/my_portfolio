@@ -24,7 +24,7 @@ The planned PSudo IT Solution page is marked Coming soon. Its form opens the vis
 
 The menu is defined once in `src/components/Navigation.jsx`. All routes use it. At widths of 1240 px and below it becomes a scrollable modal sidebar, with Escape/backdrop dismissal, focus containment, and scroll locking.
 
-The homepage background combines a shield-and-circuit illustration at `public/image/cybersecurity-background.webp` with animated zoom, scan light, code streams, and circuit nodes. Pause background, reduced motion, and hidden tabs suspend animations.
+The homepage background combines a shield-and-circuit illustration at `public/image/cybersecurity-background.webp` with animated zoom, scan light, code streams, and circuit nodes. The background runs automatically; reduced motion and hidden tabs suspend animations.
 
 One React cursor effect is shared by all pages. It activates only after mouse movement, stays above the header, and enters the sidebar's native top layer. Touch, reduced motion, and form controls retain the native cursor. Route changes and unmounting clean up animation frames, event handlers, and observers.
 

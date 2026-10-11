@@ -2,9 +2,8 @@ import React from "react";
 import {
   WorkGrid,
   BadgeCarousel,
-  MotionButton,
 } from "../components/Content.jsx";
-export default function Home({ data, paused, onToggle, reduced }) {
+export default function Home({ data }) {
   return (
     <div className="container">
       <section className={"hero"} id={"home"}>
@@ -35,11 +34,6 @@ export default function Home({ data, paused, onToggle, reduced }) {
               <span aria-hidden="true">↗</span>
               {" View Projects"}
             </a>
-            <MotionButton
-              paused={paused}
-              onToggle={onToggle}
-              reduced={reduced}
-            />
           </div>
         </div>
         <div className={"cyber-stats"}>

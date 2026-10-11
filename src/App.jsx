@@ -36,7 +36,6 @@ export default function App() {
     [loadedPage, setLoadedPage] = useState(null),
     [settled, setSettled] = useState(false),
     [error, setError] = useState(""),
-    [paused, setPaused] = useState(false),
     reduced = useMedia("(prefers-reduced-motion: reduce)");
   const pageKey = url.pathname + url.search;
   const loading = loadedPage !== pageKey;
@@ -89,9 +88,6 @@ export default function App() {
     });
     return () => cancelAnimationFrame(frame);
   }, [url.href, !!data]);
-  useEffect(() => {
-    document.body.classList.toggle("background-paused", paused || reduced);
-  }, [paused, reduced]);
   let content;
   if (
     ["projects", "labs", "editor", "detail", "home"].includes(route.page) &&
@@ -110,14 +106,7 @@ export default function App() {
       </div>
     );
   else if (route.page === "home")
-    content = (
-      <Home
-        data={data}
-        paused={paused}
-        onToggle={() => setPaused(!paused)}
-        reduced={reduced}
-      />
-    );
+    content = <Home data={data} />;
   else if (["projects", "labs"].includes(route.page))
     content = <WorkList key={route.page} kind={route.page} data={data} />;
   else if (route.page === "editor") content = <Editor published={data} />;
@@ -165,7 +154,7 @@ export default function App() {
         />
       )}
       <div id="site-shell" inert={loading} aria-busy={loading}>
-        {route.page === "home" && <Background paused={paused} />}
+        {route.page === "home" && <Background />}
         <Navigation url={url} />
         <main
           id="page-content"

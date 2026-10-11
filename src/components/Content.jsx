@@ -139,20 +139,3 @@ export function BadgeCarousel({ badges }) {
     </section>
   );
 }
-export function MotionButton({ paused, onToggle, reduced }) {
-  return (
-    <button
-      className="background-toggle"
-      type="button"
-      disabled={reduced}
-      aria-pressed={paused || reduced}
-      onClick={onToggle}
-    >
-      {reduced
-        ? "Reduced motion enabled"
-        : paused
-          ? "Resume background"
-          : "Pause background"}
-    </button>
-  );
-}
