@@ -211,6 +211,7 @@ export default function App() {
             <a href="/blog.html">Blog</a>
             <a href="/index.html#contact">Contact</a>
             <a href="/search.html">Search portfolio</a>
+            <a href="/admin.html">Admin Dashboard</a>
           </nav>
           <nav aria-label="Social and contact links" className="footer-social">
             <a
@@ -233,7 +234,6 @@ export default function App() {
               <Icon name="mail" />
               Email
             </a>
-            <a href="/admin.html">Admin sign-in</a>
             <a href="tel:+94752652360">
               <Icon name="phone" />
               Phone
