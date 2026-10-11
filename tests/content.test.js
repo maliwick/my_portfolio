@@ -8,7 +8,7 @@ import {
   resolveRoute,
 } from "../src/lib.js";
 const content = JSON.parse(
-  fs.readFileSync(new URL("../public/data/content.json", import.meta.url)),
+  fs.readFileSync(new URL("../data/seed.json", import.meta.url)),
 );
 test("public search excludes drafts and searches tools", () => {
   const data = structuredClone(content);
@@ -37,7 +37,7 @@ test("existing URLs and direct work-detail queries resolve", () => {
     ["/index.html", "home"],
     ["/projects.html", "projects"],
     ["/labs.html", "labs"],
-    ["/editor.html", "editor"],
+    ["/editor.html", "admin"],
     ["/business/index.html", "business"],
     ["/blog.html", "blog"],
     ["/blog-zero-trust.html", "zero-trust"],

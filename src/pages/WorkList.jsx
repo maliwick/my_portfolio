@@ -3,7 +3,12 @@ import { publicItems } from "../lib.js";
 import { WorkGrid } from "../components/Content.jsx";
 export default function WorkList({ kind, data }) {
   const [query, setQuery] = useState("");
-  const title = kind === "labs" ? "Lab practicals" : "Projects";
+  const title = {
+    labs: "Lab practicals",
+    projects: "Projects",
+    badges: "Badges",
+    blog: "Blog",
+  }[kind];
   const items = publicItems(data[kind], query);
   return (
     <div className="work-main">
@@ -15,7 +20,11 @@ export default function WorkList({ kind, data }) {
       <p className="work-lead">
         {kind === "labs"
           ? "Experiments, evidence, and lessons from authorized security labs."
-          : "Applications, academic projects, and the things I build."}
+          : kind === "blog"
+            ? "Articles, ideas, and lessons about technology and security."
+            : kind === "badges"
+              ? "Credentials and learning milestones; sample cards are clearly labeled."
+              : "Applications, academic projects, and the things I build."}
       </p>
       <label className="work-search">
         Search {title.toLowerCase()}

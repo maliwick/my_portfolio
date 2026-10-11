@@ -30,7 +30,14 @@ export function WorkGrid({ items, kind }) {
           <article className="work-card" key={v.id}>
             <span className="work-index">
               {String(i + 1).padStart(2, "0")} /{" "}
-              {kind === "labs" ? "LAB PRACTICAL" : "PROJECT"}
+              {
+                {
+                  labs: "LAB PRACTICAL",
+                  projects: "PROJECT",
+                  blog: "BLOG ARTICLE",
+                  badges: "BADGE",
+                }[kind]
+              }
             </span>
             <Sample entry={v} />
             <h2>{v.title}</h2>
@@ -41,7 +48,7 @@ export function WorkGrid({ items, kind }) {
                 "/work.html?type=" + kind + "&id=" + encodeURIComponent(v.id)
               }
             >
-              {kind === "labs" ? "Read write-up ↗" : "Explore project ↗"}
+              {kind === "projects" ? "Explore project ↗" : "Read more ↗"}
             </a>
           </article>
         ))
@@ -62,6 +69,7 @@ export function WorkDetail({ entry, kind, preview = false }) {
       <Tags tags={entry.tags} />
       {entry.date && <p>{entry.date}</p>}
       {entry.issuer && <p>{entry.issuer}</p>}
+      {entry.author && <p>By {entry.author}</p>}
       {entry.body && <div className="writeup">{entry.body}</div>}
       <ExternalLink url={entry.url}>
         {kind === "badges"

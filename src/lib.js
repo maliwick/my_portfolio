@@ -1,4 +1,4 @@
-export const groups = ["projects", "labs", "badges"];
+export const groups = ["projects", "labs", "badges", "blog"];
 export const draftKey = "malinga-content-drafts-v1";
 export function safeUrl(value) {
   try {
@@ -10,7 +10,9 @@ export function safeUrl(value) {
 }
 export function validateContent(data) {
   if (!data || groups.some((k) => !Array.isArray(data[k])))
-    throw new Error("The file must contain projects, labs, and badges arrays.");
+    throw new Error(
+      "The file must contain projects, labs, badges, and blog arrays.",
+    );
   for (const k of groups) {
     const ids = new Set();
     for (const v of data[k]) {
@@ -42,7 +44,7 @@ export async function loadContent() {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const r = await fetch("/data/content.json", {
+    const r = await fetch("/api/content", {
       cache: "no-cache",
       signal: controller.signal,
     });
@@ -75,8 +77,14 @@ export function resolveRoute(pathname, search = "") {
     "/projects.html": "projects",
     "/labs": "labs",
     "/labs.html": "labs",
-    "/editor": "editor",
-    "/editor.html": "editor",
+    "/editor": "admin",
+    "/editor.html": "admin",
+    "/admin": "admin",
+    "/admin.html": "admin",
+    "/search": "search",
+    "/search.html": "search",
+    "/badges": "badges",
+    "/badges.html": "badges",
     "/business": "business",
     "/business/index.html": "business",
     "/blog": "blog",

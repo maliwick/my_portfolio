@@ -71,3 +71,7 @@ node_modules/
 # React build and local runtime
 dist/
 .sites-runtime/
+
+.build/
+.wrangler/
+.dev.vars

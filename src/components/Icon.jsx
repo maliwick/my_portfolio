@@ -1,5 +1,6 @@
 import React from "react";
 const paths = {
+  search: "M20 20l-5-5M16 9a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z",
   arrow: "M7 17 17 7M7 7h10v10",
   shield: "M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Zm-4 9 3 3 5-6",
   code: "m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16",

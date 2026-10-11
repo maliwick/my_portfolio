@@ -1,37 +1,32 @@
-# Content and publishing
+# Manage and publish portfolio content
 
-## Add your work
+Use `/admin.html` on the host whose portfolio you want to edit. `/editor.html` is a compatibility link to the same protected dashboard. Visitors browse `/index.html` and search `/search.html`; they do not need an account.
 
-1. Open Content editor (`/editor.html`). Create or edit a project, lab practical, or badge.
-2. Enter a summary, tools, date, full write-up, and optional source or verification URL.
-3. Set visibility to Published for an entry that should appear to visitors.
-4. Save the browser draft, then download `content.json`.
-5. Replace `public/data/content.json` on the GitHub deployment branch and commit. The host builds the React app and deploys the change.
+## Admin workflow
 
-Draft entries are hidden by the interface but remain readable in the public JSON. Keep private information out of committed files. The private ChatGPT review copy needs a separate refresh.
+1. Complete [ADMIN_SETUP.md](ADMIN_SETUP.md) for your Cloudflare account, then sign in.
+2. Import the existing portfolio once.
+3. Select Projects, Labs, Badges or Blog, then create a new entry or select one to edit.
+4. Enter a title, summary, topics, date, full content and optional supporting link. Badges have an issuer; blog posts have an author.
+5. Choose Draft to keep the entry private, or Published to make it visible to visitors. Save to the database, with no GitHub commit needed for content changes.
+6. Preview before publishing. Delete permanently removes an entry. The dashboard reports conflicts if another session changed the entry while you were editing it.
 
-Publishing is authorized by GitHub login. The browser editor is public and saves drafts only on that browser/device. It cannot upload directly to a server; it is not a backend admin dashboard. No API token or admin password is stored in the frontend.
+Drafts are restricted by server authorization, not merely hidden by the UI. Browser storage is not the content database. Dashboard backups include drafts and must remain private.
 
-## Badges
+## Public portfolio
 
-The initial badge cards are samples, not earned credentials. Add a real title, issuer, and verification URL, and clear Sample to show an earned badge. The carousel moves right to left and pauses on hover, keyboard focus, or its pause button. Reduced motion disables animation.
+Published projects, labs, badges and blog posts are returned by `/api/content`. The portfolio search filters by content type and searches titles, summaries and topics. Existing article and work-detail links continue to resolve. The contact section shows plain details; footer links provide email, phone, GitHub and LinkedIn destinations.
 
-## Business inquiries
+The sample badge cards are labeled samples, not earned credentials. Replace them with real details and a verification link, and clear the Sample flag. The badge carousel moves right to left and respects reduced motion.
 
-The planned PSudo IT Solution page is marked Coming soon. Its form opens the visitor's email application addressed to malingawelagedara523@gmail.com; it does not automatically send email or store submissions.
+## Shared appearance
 
-## Shared navigation and effects
+All public pages use one navigation component, in the order Home, Badges, Skills, Experience, About, Projects, Labs, Blog, PSudo IT, Contact. Small screens use a scrollable modal sidebar. Search is available from the header and footer; admin sign-in is separate from the main menu.
 
-The menu is defined once in `src/components/Navigation.jsx`. All routes use it. Its menu order is Home, Badges, Skills, Experience, About, Projects, Labs, Blog, PSudo IT, Contact. Mobile navigation uses numbered full-width links, inline SVG icons, and a scrollable side panel. At widths of 1240 px and below it becomes a scrollable modal sidebar, with Escape/backdrop dismissal, focus containment, and scroll locking.
+The cybersecurity background runs automatically, respects reduced motion, and suspends while the tab is hidden. The animated loader appears on initial visits, refreshes and page changes, with a timeout and reduced-motion support. Same-page section links scroll without replaying it.
 
-The homepage background combines a shield-and-circuit illustration at `public/image/cybersecurity-background.webp` with animated zoom, scan light, code streams, and circuit nodes. The background runs automatically; reduced motion and hidden tabs suspend animations.
+The planned PSudo IT Solution business remains marked Coming soon. Its inquiry form opens the visitor's email app; it does not automatically send or save submissions.
 
-One React cursor effect is shared by all pages. It activates only after mouse movement, stays above the header, and enters the sidebar's native top layer. Touch, reduced motion, and form controls retain the native cursor. Route changes and unmounting clean up animation frames, event handlers, and observers.
+## Separate deployments
 
-## Initial loading screen
-
-The HTML entrypoint includes an immediate animated fallback before React loads. React then displays a cybersecurity shield loader while content and the homepage image load, fades it out, and enables the page. It runs on first visits, refreshes and internal page changes, including work-detail links and browser Back/Forward. Same-page section links do not restart it. After loading, focus moves to the new page content for keyboard navigation. A timeout dismisses the overlay, failed requests show the existing Retry control, and missing images do not block entry. Reduced motion disables loader animation.
-
-## Homepage and footer
-
-The contact section presents plain email, phone and location details without links or icons. The shared footer provides labeled GitHub, LinkedIn, email and phone links, plus project, lab, blog, contact and editor links. Icons are inline SVG and do not depend on an external font. Clicking the current section link scrolls back to that section; clean blog and work URLs are also supported.
+The private ChatGPT review copy and your public Cloudflare Worker have separate databases and sign-in configuration. Editing content on one does not update the other. GitHub stores the application source and seed content, while the active content lives in the selected host's database.

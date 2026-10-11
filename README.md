@@ -1,6 +1,6 @@
 # Malinga Portfolio — React
 
-A responsive React + Vite portfolio using JSX, HTML, and CSS. Includes project and lab pages, blog articles, a planned PSudo IT Solution business page, sample badges, a browser content editor, an animated cybersecurity background, and a shared reticle cursor.
+A responsive React + Vite portfolio using JSX, HTML, and CSS. Includes project and lab pages, blog articles, a planned PSudo IT Solution business page, sample badges, a protected admin dashboard with D1 storage, an animated cybersecurity background, and a shared reticle cursor.
 
 ## Run locally
 
@@ -19,7 +19,9 @@ Open the URL printed by Vite. Use `npm run build` to create `dist/`, `npm run pr
 - `src/components/`: shared navigation, cursor, background, content cards, and inquiry form.
 - `src/styles/`: CSS with business styles scoped to its page.
 - `src/lib.js`: content validation, search, and URL resolution.
-- `public/data/content.json`: public projects, labs, and badges.
+- `data/seed.json`: initial projects, labs, badges and blog posts (imported once through admin).
+- `worker/`: authenticated API and public content endpoint.
+- `db/` and `drizzle/`: database schema and generated migrations.
 - `public/image/`: portfolio assets.
 - `tests/`: data, routing, and component-rendering checks.
 
@@ -27,7 +29,7 @@ Existing `.html` links remain supported. The build emits HTML entrypoints for ev
 
 ## Hosting
 
-For Cloudflare Workers Builds, use production branch `main`, build command `npm run build`, deploy command `npx wrangler deploy`, and the repository root as the project root. The committed `wrangler.jsonc` deploys `dist` as static assets to Worker `myportfolio`, enables SPA fallback, and preserves existing `.html` URLs. No Cloudflare Vite plugin or Worker script is required for this static portfolio.
+For Cloudflare Workers Builds, use production branch `main`, build command `npm run build`, deploy command `npx wrangler deploy`, and the repository root as the project root. The committed `wrangler.jsonc` deploys `dist` as static assets to Worker `myportfolio`, enables SPA fallback, and preserves existing `.html` URLs. The Worker backend serves `/api/*`; native static assets serve the public portfolio. Complete [ADMIN_SETUP.md](ADMIN_SETUP.md) to connect your D1 database and admin sign-in.
 
 Do not add `/* /index.html 200` to `_redirects`: Workers rejects that catch-all rule as an infinite loop. SPA fallback is configured through `assets.not_found_handling` instead. After a failed deployment, retry against the latest `main` commit.
 

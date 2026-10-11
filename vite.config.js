@@ -4,6 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 export const pageAliases = [
   "projects.html",
+  "admin.html",
+  "search.html",
+  "badges.html",
   "labs.html",
   "work.html",
   "editor.html",

@@ -10,7 +10,7 @@ const server = await createServer({
 });
 after(() => server.close());
 const content = JSON.parse(
-  fs.readFileSync(new URL("../public/data/content.json", import.meta.url)),
+  fs.readFileSync(new URL("../data/seed.json", import.meta.url)),
 );
 test("shared navigation renders complete desktop and sidebar links", async () => {
   const { default: Navigation } = await server.ssrLoadModule(
@@ -84,18 +84,17 @@ test("business and all blog articles render as React pages", async () => {
   assert(html.includes("COMING SOON"));
   assert(html.includes("inquiry-email"));
   assert(html.includes("Prepare email"));
-  const blogs = await server.ssrLoadModule("/src/pages/Blog.jsx");
-  for (const name of [
-    "BlogIndex",
-    "BlogZeroTrust",
-    "BlogPasswordSecurity",
-    "BlogRansomware",
-  ])
+  const { WorkDetail } = await server.ssrLoadModule(
+    "/src/components/Content.jsx",
+  );
+  for (const entry of content.blog)
     assert(
-      renderToStaticMarkup(React.createElement(blogs[name])).length > 1000,
+      renderToStaticMarkup(
+        React.createElement(WorkDetail, { entry, kind: "blog" }),
+      ).includes(entry.title),
     );
 });
-test("content is escaped and editor retains export and publishing instructions", async () => {
+test("content is escaped and visitors can search all content types", async () => {
   const { WorkDetail } = await server.ssrLoadModule(
     "/src/components/Content.jsx",
   );
@@ -109,14 +108,14 @@ test("content is escaped and editor retains export and publishing instructions",
   );
   assert(!html.includes("<script>"));
   assert(html.includes("&lt;script&gt;"));
-  const { default: Editor } = await server.ssrLoadModule(
-    "/src/pages/Editor.jsx",
+  const { default: Search } = await server.ssrLoadModule(
+    "/src/pages/Search.jsx",
   );
-  const editor = renderToStaticMarkup(
-    React.createElement(Editor, { published: content }),
+  const search = renderToStaticMarkup(
+    React.createElement(Search, { data: content }),
   );
-  assert(editor.includes("public/data/content.json"));
-  assert(editor.includes("Download content.json"));
+  assert(search.includes("Search portfolio"));
+  assert(search.includes(content.blog[0].title));
 });
 
 test("initial visit shows an accessible loader and makes the page inert", async () => {
@@ -137,7 +136,8 @@ test("initial visit shows an accessible loader and makes the page inert", async 
       "/labs.html",
       "/blog.html",
       "/index.html#contact",
-      "/editor.html",
+      "/search.html",
+      "/admin.html",
       "https://github.com/maliwick",
       "https://www.linkedin.com/in/thisaramalinga523cyber/",
       "mailto:malingawelagedara525@gmail.com",

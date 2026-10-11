@@ -1,0 +1,164 @@
+{
+  "projects": [
+    {
+      "id": "roam-ride",
+      "title": "Roam Ride",
+      "summary": "Dynamic itinerary planning for short-duration travel in Sri Lanka.",
+      "tags": [
+        "Flutter",
+        "Python",
+        "Firebase",
+        "Google Maps"
+      ],
+      "body": "An academic mobile app project that recommends destinations within a time budget and adjusts the itinerary as a trip progresses. Google Maps provides routing and estimated travel times.\n\nThe project explores RL and DQN for destination selection, alongside time alerts and GPS path capture for new destinations.",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "online-quiz",
+      "title": "Online Quiz System",
+      "summary": "An academic web project exploring authentication, quizzes, and database integration.",
+      "tags": [
+        "React",
+        "Python",
+        "MySQL"
+      ],
+      "body": "A web-based quiz platform with user authentication and database-backed quiz data. Add screenshots, source links, and verified implementation details as the project documentation develops.",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "arrow-robot",
+      "title": "Colour Arrow Following Robot",
+      "summary": "Computer vision and hardware integration for following black and red arrows.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "Arduino"
+      ],
+      "body": "A collaborative academic robotics project using image processing to identify arrows and control movement.",
+      "status": "published",
+      "sample": false
+    }
+  ],
+  "labs": [
+    {
+      "id": "sample-smb",
+      "title": "SMB Share Access Review",
+      "summary": "Sample write-up layout for documenting anonymous share access in a local lab.",
+      "tags": [
+        "Nmap",
+        "Samba",
+        "Enumeration"
+      ],
+      "date": "",
+      "body": "SAMPLE WRITE-UP \u2014 replace with your reviewed evidence before publishing a real report.\n\nObjective\nEvaluate whether an intentionally vulnerable local lab permits anonymous SMB access.\n\nMethod\nEnumerate exposed SMB services, then verify access using smbclient with anonymous authentication in the authorized environment.\n\nFinding\nAnonymous directory listing demonstrates read access. A scanner result suggesting write access needs a separate safe manual test before it can be claimed as verified.\n\nRemediation\nDisable guest access, restrict share permissions, and limit SMB exposure to trusted networks.\n\nReflection\nRecord the commands, sanitized evidence, limitations, and lessons from the exercise.",
+      "status": "published",
+      "sample": true
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-1",
+      "title": "Lab Explorer",
+      "issuer": "Practice milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-2",
+      "title": "Network Foundations",
+      "issuer": "Learning milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-3",
+      "title": "Web Security",
+      "issuer": "Practice milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-4",
+      "title": "Blue Team Journey",
+      "issuer": "Learning milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-5",
+      "title": "HTB Progress",
+      "issuer": "Profile placeholder",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    }
+  ],
+  "blog": [
+    {
+      "id": "zero-trust",
+      "title": "Understanding Zero-Trust Security",
+      "summary": "Explore the principles behind never trust, always verify and how they change security architecture.",
+      "date": "2024-01-15",
+      "author": "Security Team",
+      "issuer": "",
+      "url": "",
+      "tags": [
+        "Cybersecurity"
+      ],
+      "body": "What is Zero-Trust Security?\n\nZero-Trust Security is a modern security paradigm that fundamentally challenges the traditional \"trust but verify\" approach. Instead, it operates on the principle of \"never trust, always verify.\" This means that no user, device, or system\u2014regardless of whether it's inside or outside the organization's network\u2014is automatically trusted.\n\nThe Evolution of Network Security\n\nHistorically, organizations relied on a perimeter-based security model, often referred to as the \"castle and moat\" approach. This model assumes that everything inside the network boundary is trustworthy, and anything outside is potentially malicious. However, with the rise of cloud computing, remote work, and sophisticated cyber threats, this approach has proven insufficient.\n\nThe COVID-19 pandemic accelerated the shift toward remote work, exposing the vulnerabilities of the perimeter-based model. As employees accessed company resources from various locations and devices, the traditional network boundary became increasingly difficult to maintain and enforce.\n\nCore Principles of Zero-Trust\n\nZero-Trust architecture is built on several core principles:\n\nVerify Every Access Request: Every user and device must authenticate and be authorized before accessing any resource, regardless of their location or previous access.\n\nLeast Privilege Access: Users and systems should have access only to the resources they absolutely need to perform their job functions.\n\nContinuous Monitoring: Security is an ongoing process. Systems must continuously monitor for anomalies and threats.\n\nAssume Breach: Organizations should operate as if a breach has already occurred or will occur, requiring defensive strategies accordingly.\n\nKey Components of Zero-Trust Implementation\n\nImplementing a Zero-Trust architecture requires several key components:\n\n1. Identity and Access Management (IAM)\n\nStrong identity verification is crucial. This includes multi-factor authentication (MFA), which requires users to provide multiple forms of identification before gaining access. Biometric authentication, hardware tokens, and one-time passwords are all part of a comprehensive IAM strategy.\n\n2. Network Segmentation\n\nRather than having a single secure perimeter, Zero-Trust divides the network into smaller segments. Each segment operates as its own security boundary, requiring separate authentication for access. Microsegmentation takes this further by creating segments at the application or service level.\n\n3. Device Security\n\nEvery device connecting to the network must be secure and compliant with organizational policies. This includes regular patching, antivirus protection, and endpoint detection and response (EDR) solutions.\n\n4. Data Protection\n\nData should be encrypted both in transit and at rest. Encryption keys must be carefully managed, and access to sensitive data should be tightly controlled and audited.\n\nBenefits of Zero-Trust Security\n\nOrganizations adopting Zero-Trust architecture experience several significant benefits:\n\nReduced Risk: By implementing continuous verification and least privilege access, organizations significantly reduce the risk of unauthorized access.\n\nFaster Threat Detection: Continuous monitoring enables organizations to detect and respond to threats more quickly.\n\nCompliance Improvements: Zero-Trust helps organizations meet regulatory requirements for data protection and access control.\n\nImproved Incident Response: The segmented nature of Zero-Trust limits the lateral movement of attackers, containing breaches to smaller areas.\n\nChallenges in Zero-Trust Implementation\n\nWhile Zero-Trust offers substantial benefits, implementation does present challenges:\n\nComplexity: Zero-Trust architectures are more complex than traditional models, requiring sophisticated tools and expertise.\n\nCost: Initial implementation costs can be significant, including tools, training, and organizational restructuring.\n\nUser Experience: Frequent authentication and authorization checks can impact user productivity if not carefully balanced.\n\nLegacy Systems: Many organizations struggle to implement Zero-Trust with existing legacy systems and applications.\n\nBest Practices for Zero-Trust Implementation\n\nFor organizations planning to implement Zero-Trust, consider these best practices:\n\nStart with a clear inventory of all assets, users, and data flows\n\nBegin with critical assets and gradually expand to other systems\n\nInvest in proper tools and technologies that support Zero-Trust principles\n\nTrain and educate employees about the new security practices\n\nContinuously monitor and adjust the implementation based on threats and organizational changes\n\nConclusion\n\nZero-Trust Security represents a fundamental shift in how organizations approach cybersecurity. By moving away from the perimeter-based model and implementing continuous verification, least privilege access, and continuous monitoring, organizations can significantly reduce their security risks and better protect against advanced threats. While implementation challenges exist, the benefits far outweigh the costs in today's threat landscape.\n\nAs cyber threats continue to evolve, Zero-Trust is not just a best practice\u2014it's becoming essential for organizations that want to protect their most valuable assets.\n\n\ud83d\udd11 Authentication\ud83c\udf10 Network Security\ud83d\ude80 Best Practices\ud83d\udd12 IAM\ud83d\udee1\ufe0f Architecture\u2190 Back to All Articles",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "password-security",
+      "title": "Password Security",
+      "summary": "Practical guidance for creating strong passwords and protecting your accounts.",
+      "date": "2024-01-10",
+      "author": "Security Team",
+      "issuer": "",
+      "url": "",
+      "tags": [
+        "Cybersecurity"
+      ],
+      "body": "The Critical Importance of Password Security\n\nPasswords are the first line of defense against unauthorized access to your accounts. Yet, weak passwords remain the #1 cause of data breaches worldwide. According to security experts, the majority of cyberattacks exploit weak or reused passwords. Understanding the most common password security mistakes is essential for protecting your digital identity.\n\nMistake #1: Using Weak, Simple Passwords\n\nThe most critical password mistake is using weak passwords like \"password123,\" \"123456,\" or \"qwerty.\" These passwords can be cracked in seconds using brute-force attacks.\n\nWhy This is Dangerous:\n\nEasily guessable patterns (birthdate, names, sequential numbers)\n\nShort length (less than 8 characters)\n\nNo variety in character types (lowercase, uppercase, numbers, special characters)\n\nBest Practice:\n\nCreate strong passwords with at least 12 characters, combining uppercase letters, lowercase letters, numbers, and special characters (!@#$%^&*). For example: \"Cyber$ecure#2024!\" is significantly stronger than \"password123\".\n\nMistake #2: Reusing Passwords Across Multiple Accounts\n\nMany people use the same password for multiple accounts to make them easier to remember. This is one of the most dangerous practices in password security.\n\nWhy This is Dangerous:\n\nIf a hacker gains access to one account (even from a less important service), they can use the same password to access your other accounts, including critical ones like email and banking.\n\nReal-World Impact:\n\nA breach at a minor website can expose your email password\n\nYour email becomes the gateway to resetting other accounts\n\nHackers can access your most sensitive data\n\nBest Practice:\n\nUse a unique password for each account. To manage multiple complex passwords, use a reputable password manager like Bitwarden, 1Password, or LastPass. These tools securely store and auto-fill your passwords.\n\nMistake #3: Sharing Passwords or Writing Them Down\n\nSharing passwords with colleagues or writing them down on sticky notes might seem convenient, but it creates significant security risks.\n\nWhy This is Dangerous:\n\nPhysical security: Someone could find a written password\n\nTrust issues: Shared passwords can't be individually audited\n\nNo accountability: Multiple people knowing the password makes tracking who accessed what difficult\n\nBest Practice:\n\nNever share passwords directly. Instead, use centralized access management systems that allow you to grant temporary access without revealing the password. For team access, use role-based access control (RBAC) systems.\n\nMistake #4: Not Using Multi-Factor Authentication (MFA)\n\nEven with a strong password, relying solely on passwords leaves your accounts vulnerable. Multi-Factor Authentication adds an extra security layer.\n\nWhy This is Dangerous:\n\nIf someone obtains your password through phishing or a data breach, they can immediately access your account. MFA prevents this by requiring a second verification method.\n\nMFA Methods Include:\n\nAuthenticator apps (Google Authenticator, Authy)\n\nSMS or email verification codes\n\nHardware security keys (YubiKey, Google Titan)\n\nBiometric authentication (fingerprint, face recognition)\n\nBest Practice:\n\nEnable MFA on all important accounts, especially email, banking, and social media. Hardware security keys provide the strongest protection against phishing attacks.\n\nMistake #5: Ignoring Password Updates and Reusing Old Passwords\n\nMany people change their passwords but then cycle back to old ones or make minor variations like \"Password1,\" \"Password2,\" etc.\n\nWhy This is Dangerous:\n\nPredictable patterns: Hackers know people use sequential variations\n\nOutdated credentials: If old passwords were compromised, reusing them exposes you again\n\nLost security benefits: Password rotation loses its purpose if you recycle old passwords\n\nBest Practice:\n\nCreate completely new passwords when updating. Use a password manager to generate random, unique passwords. Change passwords if you suspect a breach or haven't updated them in 90 days for highly sensitive accounts.\n\nAdditional Password Security Tips\n\nUse Password Managers: Services like Bitwarden, 1Password, and LastPass securely store complex passwords\n\nEnable Password History: Don't allow reuse of previous passwords\n\nMonitor Your Accounts: Regularly review account activity and login history\n\nStay Alert to Phishing: Be suspicious of emails asking for password verification\n\nUpdate Regularly: Change passwords for critical accounts every 90 days\n\nCreate a Recovery Plan: Maintain recovery email addresses and phone numbers\n\nConclusion\n\nPassword security is fundamental to protecting your digital life. By avoiding these five common mistakes\u2014using weak passwords, reusing passwords, sharing them, ignoring MFA, and recycling old passwords\u2014you significantly reduce your risk of compromise. Remember: strong, unique passwords combined with multi-factor authentication form the foundation of your cybersecurity defense.\n\nStart today by auditing your current passwords, enabling MFA on critical accounts, and considering a password manager to help you maintain secure practices moving forward.\n\n\ud83d\udd11 Password Security\u26a0\ufe0f Risk Management\ud83d\udca1 Tips & Tricks\ud83d\udd10 MFA\ud83d\udee1\ufe0f Protection\u2190 Back to All Articles",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "ransomware",
+      "title": "Ransomware Prevention",
+      "summary": "Understand ransomware risks and practical ways to protect your systems and data.",
+      "date": "2024-01-05",
+      "author": "Security Team",
+      "issuer": "",
+      "url": "",
+      "tags": [
+        "Cybersecurity"
+      ],
+      "body": "Understanding the Ransomware Threat\n\nRansomware attacks are among the most devastating cyber threats of our time. In 2023 alone, organizations worldwide lost billions of dollars to ransomware attacks. These malicious attacks encrypt an organization's critical data and systems, rendering them inaccessible until a ransom is paid\u2014often with no guarantee that data will be returned.\n\nThe healthcare, finance, manufacturing, and government sectors have been particularly hard hit, with attacks disrupting critical services and endangering lives. This comprehensive guide covers detection methods, prevention strategies, and incident response procedures to help protect your organization.\n\nWhat is Ransomware?\n\nRansomware is a type of malware that encrypts files or systems and demands payment (ransom) from the victim for decryption. Modern ransomware often includes data exfiltration\u2014hackers steal data before encrypting it, then threaten to publish sensitive information if payment isn't made.\n\nTypes of Ransomware:\n\nCrypto-Ransomware: Encrypts files and demands payment for decryption keys\n\nLocker-Ransomware: Locks users out of their systems entirely\n\nScareware: Falsely claims the system is infected to extort payment\n\nLeakware: Threatens to publish stolen data unless paid\n\nHow Ransomware Spreads\n\nUnderstanding how ransomware enters your systems is critical for prevention:\n\nCommon Attack Vectors:\n\nPhishing Emails: Malicious attachments or links in emails\n\nVulnerable Remote Access: Exploiting weak RDP, VPN, or SSH credentials\n\nUnpatched Software: Exploiting known vulnerabilities in outdated applications\n\nCompromised Credentials: Using stolen usernames and passwords\n\nMalicious Downloads: Infected files downloaded from compromised or malicious websites\n\nSupply Chain Attacks: Compromising trusted software or service providers\n\nRansomware Detection Methods\n\n1. Behavioral Detection\n\nModern endpoint detection and response (EDR) solutions monitor file system activity and process behavior. Ransomware typically exhibits suspicious patterns like:\n\nRapid file encryption attempts\n\nUnusual file extension changes\n\nAccess to system shadow copies\n\nSuspicious registry modifications\n\n2. Network-Based Detection\n\nNetwork detection and response (NDR) systems can identify ransomware command-and-control (C2) communications:\n\nUnusual outbound connections\n\nLarge data exfiltration attempts\n\nCommunications with known malicious IP addresses\n\nEncrypted traffic patterns indicative of C2 communication\n\n3. File Integrity Monitoring\n\nTools that monitor changes to critical files can alert you to unauthorized modifications. This is particularly effective for detecting ransomware during early stages.\n\nComprehensive Ransomware Prevention Strategy\n\n1. Regular Backups\n\nRegular, tested backups are your most effective defense against ransomware:\n\nImplement 3-2-1 backup rule: 3 copies of data, 2 different storage types, 1 offsite\n\nMaintain offline backups (not connected to the network)\n\nTest restoration procedures regularly\n\nSecure backup systems with strong authentication\n\nSegment backups from production systems\n\n2. Keep Systems Updated\n\nPatching vulnerabilities is essential:\n\nImplement automated patch management\n\nPrioritize critical and high-severity patches\n\nTest patches before production deployment\n\nUpdate all software, including operating systems and third-party applications\n\n3. Network Segmentation\n\nDivide your network into segments to limit lateral movement:\n\nIsolate critical systems from general networks\n\nImplement zero-trust network architecture\n\nControl traffic between segments with firewalls\n\nMonitor inter-segment communications\n\n4. Access Control\n\nImplement strong authentication and least privilege:\n\nRequire strong passwords and multi-factor authentication (MFA)\n\nDisable unnecessary remote access services\n\nUse VPN with strong encryption for remote access\n\nApply least privilege principles to all user accounts\n\nRegularly audit and remove unused accounts\n\n5. Email Security\n\nEmail is the most common infection vector:\n\nDeploy advanced email filtering with machine learning\n\nBlock executable attachments\n\nScan URLs for malicious content\n\nImplement DMARC, SPF, and DKIM authentication\n\nTrain employees on phishing recognition\n\n6. Endpoint Protection\n\nStrong endpoint security is essential:\n\nDeploy modern EDR solutions\n\nKeep antivirus and antimalware software updated\n\nEnable behavioral analysis\n\nImplement application whitelisting on critical systems\n\nMonitor suspicious processes and registry modifications\n\nIncident Response for Ransomware\n\nDespite best efforts, breaches can still occur. A rapid response is critical:\n\nImmediate Actions (0-2 hours):\n\nIsolate affected systems from the network immediately\n\nNotify your incident response team\n\nDocument the ransom message and any communications\n\nPreserve evidence for forensic analysis\n\nAssess the scope of the infection\n\nShort-Term Response (2-24 hours):\n\nIdentify and isolate all affected systems\n\nDetermine the ransomware variant (check resources like ID-Ransomware.com)\n\nSearch for available decryption tools\n\nReview backup systems to ensure they're uninfected\n\nNotify relevant stakeholders and regulatory bodies if required\n\nLong-Term Response (Days-Weeks):\n\nConduct thorough forensic analysis\n\nIdentify and remediate the initial attack vector\n\nRestore systems from clean backups\n\nStrengthen security controls based on findings\n\nConduct post-incident review and staff training\n\nTo Pay or Not to Pay?\n\nLaw enforcement agencies, including the FBI, strongly recommend against paying ransoms:\n\nNo guarantee data will be restored\n\nPayment funds criminal operations\n\nMay result in legal consequences (sanctions, money laundering charges)\n\nIncreases likelihood of future attacks\n\nMay be prohibited by government regulations\n\nConclusion\n\nRansomware prevention requires a comprehensive, multi-layered approach. By implementing strong backups, keeping systems updated, segmenting networks, controlling access, securing email, protecting endpoints, and developing a robust incident response plan, you can significantly reduce your organization's ransomware risk.\n\nRemember: regular backups are your insurance policy. No matter how sophisticated the attack, organizations with reliable offline backups can recover without paying ransoms. Invest in these prevention strategies today to protect your organization's future.\n\n\ud83d\udea8 Threat Detection\ud83d\udee1\ufe0f Defense Strategy\ud83d\udccb Response Plan\ud83d\udd12 Prevention\ud83d\udcbe Backup\u2190 Back to All Articles",
+      "status": "published",
+      "sample": false
+    }
+  ]
+}

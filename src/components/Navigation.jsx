@@ -88,6 +88,13 @@ export default function Navigation({ url }) {
         >
           {navLinks()}
         </nav>
+        <a
+          className="site-search-link"
+          href="/search.html"
+          aria-label="Search portfolio"
+        >
+          <Icon name="search" />
+        </a>
         <button
           id="site-menu-toggle"
           ref={toggle}
@@ -141,6 +148,9 @@ export default function Navigation({ url }) {
           {navLinks()}
         </nav>
         <div className="site-drawer-footer">
+          <a href="/search.html" onClick={close}>
+            Search portfolio
+          </a>
           <a
             href="https://github.com/maliwick"
             target="_blank"

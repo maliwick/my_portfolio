@@ -10,19 +10,16 @@ import { WorkDetail } from "./components/Content.jsx";
 import Home from "./pages/Home.jsx";
 import Business from "./pages/Business.jsx";
 import WorkList from "./pages/WorkList.jsx";
-import Editor from "./pages/Editor.jsx";
-import {
-  BlogIndex,
-  BlogZeroTrust,
-  BlogPasswordSecurity,
-  BlogRansomware,
-} from "./pages/Blog.jsx";
+import Admin from "./pages/Admin.jsx";
+import Search from "./pages/Search.jsx";
 const titles = {
   home: "Malinga Portfolio",
   projects: "Projects",
   labs: "Lab practicals",
   business: "PSudo IT Solution",
-  editor: "Content editor",
+  admin: "Admin dashboard",
+  search: "Portfolio search",
+  badges: "Badges",
   blog: "Cybersecurity Blog",
   "zero-trust": "Zero-Trust Security",
   "password-security": "Password Security",
@@ -91,7 +88,18 @@ export default function App() {
   }, [url.href, !!data]);
   let content;
   if (
-    ["projects", "labs", "editor", "detail", "home"].includes(route.page) &&
+    [
+      "projects",
+      "labs",
+      "badges",
+      "blog",
+      "search",
+      "zero-trust",
+      "password-security",
+      "ransomware",
+      "detail",
+      "home",
+    ].includes(route.page) &&
     !data
   )
     content = (
@@ -107,16 +115,30 @@ export default function App() {
       </div>
     );
   else if (route.page === "home") content = <Home data={data} />;
-  else if (["projects", "labs"].includes(route.page))
+  else if (["projects", "labs", "badges", "blog"].includes(route.page))
     content = <WorkList key={route.page} kind={route.page} data={data} />;
-  else if (route.page === "editor") content = <Editor published={data} />;
+  else if (route.page === "admin") content = <Admin onPublished={reload} />;
+  else if (route.page === "search") content = <Search data={data} />;
   else if (route.page === "business") content = <Business />;
-  else if (route.page === "blog") content = <BlogIndex />;
-  else if (route.page === "zero-trust") content = <BlogZeroTrust />;
-  else if (route.page === "password-security")
-    content = <BlogPasswordSecurity />;
-  else if (route.page === "ransomware") content = <BlogRansomware />;
-  else if (route.page === "detail") {
+  else if (
+    ["zero-trust", "password-security", "ransomware"].includes(route.page)
+  ) {
+    const entry = data.blog.find(
+      (v) => v.id === route.page && v.status === "published",
+    );
+    content = (
+      <div className="work-main">
+        {entry ? (
+          <WorkDetail entry={entry} kind="blog" />
+        ) : (
+          <>
+            <h1>Article not found</h1>
+            <a href="/blog.html">View blog</a>
+          </>
+        )}
+      </div>
+    );
+  } else if (route.page === "detail") {
     const kind = route.params.get("type"),
       entry = groups.includes(kind)
         ? data[kind].find(
@@ -160,9 +182,16 @@ export default function App() {
           id="page-content"
           tabIndex="-1"
           className={
-            ["projects", "labs", "editor", "detail", "not-found"].includes(
-              route.page,
-            )
+            [
+              "projects",
+              "labs",
+              "badges",
+              "blog",
+              "search",
+              "admin",
+              "detail",
+              "not-found",
+            ].includes(route.page)
               ? "work-page"
               : undefined
           }
@@ -181,7 +210,7 @@ export default function App() {
             <a href="/labs.html">Lab practicals</a>
             <a href="/blog.html">Blog</a>
             <a href="/index.html#contact">Contact</a>
-            <a href="/editor.html">Content editor</a>
+            <a href="/search.html">Search portfolio</a>
           </nav>
           <nav aria-label="Social and contact links" className="footer-social">
             <a
@@ -204,6 +233,7 @@ export default function App() {
               <Icon name="mail" />
               Email
             </a>
+            <a href="/admin.html">Admin sign-in</a>
             <a href="tel:+94752652360">
               <Icon name="phone" />
               Phone
