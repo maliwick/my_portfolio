@@ -1,0 +1,195 @@
+.portfolio-home {
+  background: #060e12;
+}
+.portfolio-home .container {
+  background: transparent;
+  z-index: 1;
+}
+.portfolio-backdrop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 80% 25%, #0b2927 0, transparent 60%), #060e12;
+}
+.portfolio-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #060e12c9, transparent 85%),
+    linear-gradient(0deg, #060e1299, transparent 65%);
+}
+.ambient-orb {
+  position: absolute;
+  width: 65vw;
+  height: 65vw;
+  min-width: 380px;
+  min-height: 380px;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.13;
+  animation: ambient-drift 24s ease-in-out infinite alternate;
+}
+.orb-green {
+  background: radial-gradient(circle, #00d88a, transparent 65%);
+  left: -20%;
+  top: -30%;
+}
+.orb-blue {
+  background: radial-gradient(circle, #00b3c8, transparent 65%);
+  right: -18%;
+  top: 12%;
+  animation-delay: -12s;
+  animation-duration: 30s;
+}
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#42bb960c 1px, transparent 1px),
+    linear-gradient(90deg, #42bb960c 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 80% 35%, black, transparent 85%);
+}
+.ambient-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 3px,
+    #00000016 3px 4px
+  );
+  opacity: 0.4;
+}
+#ambientCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+}
+.background-toggle {
+  font-size: 12px !important;
+  color: #9daec2 !important;
+  border: 1px solid #263646 !important;
+  background: #091421aa !important;
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+  min-height: 44px;
+}
+.background-paused .ambient-orb {
+  animation-play-state: paused;
+}
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(8%, 10%, 0) scale(1.1);
+  }
+}
+@media (max-width: 700px) {
+  .ambient-orb {
+    filter: blur(30px);
+    opacity: 0.1;
+  }
+  #ambientCanvas {
+    opacity: 0.4;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb {
+    animation: none;
+  }
+  #ambientCanvas {
+    display: none;
+  }
+}
+
+/* Generated cybersecurity illustration, animated as a layered background. */
+.cyber-image {
+  position: absolute;
+  inset: -5%;
+  background-image: url("/image/cybersecurity-background.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.62;
+  transform-origin: 75% 40%;
+  will-change: transform;
+  animation: cyber-image-motion 18s ease-in-out infinite alternate;
+}
+.cyber-scan {
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    105deg,
+    transparent 43%,
+    #5bf8dd05 48%,
+    #5bf8dd30 50%,
+    #5bf8dd05 52%,
+    transparent 57%
+  );
+  mix-blend-mode: screen;
+  animation: cyber-scan-pass 11s linear infinite;
+  will-change: transform;
+  z-index: 1;
+}
+.portfolio-backdrop::after {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, #060e12b0, transparent 85%),
+    linear-gradient(0deg, #060e12a0, transparent 65%);
+}
+#ambientCanvas {
+  opacity: 0.3;
+}
+.ambient-grid {
+  opacity: 0.5;
+}
+.background-paused .cyber-image,
+.background-paused .cyber-scan {
+  animation-play-state: paused;
+}
+@keyframes cyber-image-motion {
+  from {
+    transform: scale(1) translate3d(-1%, 0, 0);
+  }
+  to {
+    transform: scale(1.09) translate3d(1%, 1%, 0);
+  }
+}
+@keyframes cyber-scan-pass {
+  from {
+    transform: translate3d(-75%, 0, 0);
+  }
+  to {
+    transform: translate3d(75%, 0, 0);
+  }
+}
+@media (max-width: 700px) {
+  .cyber-image {
+    background-position: 72% center;
+    opacity: 0.38;
+  }
+  .portfolio-backdrop::after {
+    background:
+      linear-gradient(90deg, #060e12b8, #060e1244),
+      linear-gradient(0deg, #060e1299, transparent);
+  }
+  .cyber-scan {
+    opacity: 0.7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cyber-image {
+    animation: none;
+    transform: none;
+  }
+  .cyber-scan {
+    display: none;
+  }
+}

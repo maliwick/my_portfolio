@@ -1,0 +1,144 @@
+#root {
+  min-height: calc(100vh - var(--site-nav-height));
+}
+#page-content {
+  position: relative;
+  z-index: 1;
+  min-height: 65vh;
+}
+.shared-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid #263646;
+  background: #080f18;
+  padding: 28px 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #9daec2;
+}
+.shared-footer div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.shared-footer a {
+  color: #b9c7d8;
+  text-decoration: none;
+}
+.shared-footer a:hover {
+  color: #00ff88;
+}
+.business-page {
+  min-height: 65vh;
+}
+.business-page .hero {
+  min-height: 0;
+  width: auto;
+  display: grid;
+}
+.blog-page {
+  width: min(1160px, 90%);
+  margin: 42px auto 90px;
+}
+.work-page {
+  padding: 1px 0;
+}
+.container .hero-info {
+  position: relative;
+}
+.container {
+  padding-top: 0 !important;
+}
+.hero-buttons {
+  flex-wrap: wrap;
+}
+.hero-buttons > a {
+  display: inline-flex;
+}
+.work-main > h1 {
+  font-size: clamp(42px, 7vw, 76px);
+}
+#site-drawer .site-links {
+  overflow: visible;
+}
+.work-page button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.business-page .edu-status {
+  white-space: normal;
+  text-align: center;
+}
+.business-page .hero-copy {
+  min-width: 0;
+}
+.business-page .hero-visual {
+  min-width: 0;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #00ff88;
+  outline-offset: 4px;
+}
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+.badge-group[aria-hidden="true"] {
+  pointer-events: none;
+}
+.portfolio-home #page-content {
+  background: transparent;
+}
+@media (max-width: 650px) {
+  .business-page .hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .shared-footer {
+    flex-direction: column;
+  }
+  .blog-page {
+    width: 94%;
+  }
+  .container {
+    gap: 65px;
+  }
+  .work-heading {
+    align-items: flex-start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .autoBlur,
+  .autoDisplay {
+    animation: none !important;
+  }
+}
+.hero-buttons .hero-link {
+  padding: 14px 25px;
+  border: 1px solid #00ff88;
+  border-radius: 6px;
+  color: #07131b;
+  background: linear-gradient(45deg, #00ff88, #0088ff);
+  text-decoration: none;
+  font-weight: 600;
+  gap: 8px;
+  align-items: center;
+}
+.hero-buttons .hero-link.secondary {
+  background: transparent;
+  color: #00ff88;
+}
+.hero-buttons .hero-link:hover {
+  box-shadow: 0 0 18px #00ff8833;
+  transform: translateY(-2px);
+}

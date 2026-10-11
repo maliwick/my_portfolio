@@ -1,45 +1,29 @@
-# Portfolio content and publishing
-
-- `projects.html`: searchable projects, with full entries at `work.html`.
-- `labs.html`: searchable lab practicals and write-ups.
-- `business/index.html`: PSudo IT Solution, presented as a planned business.
-- `editor.html`: a browser draft editor; it is not a server-authenticated admin dashboard.
-- `data/content.json`: the shared public content source.
+# Content and publishing
 
 ## Add your work
 
-1. Open Content editor and create a project, lab practical, or badge.
+1. Open Content editor (`/editor.html`). Create or edit a project, lab practical, or badge.
 2. Enter a summary, tools, date, full write-up, and optional source or verification URL.
-3. Set visibility to Published for items that should appear on the site. Draft entries are hidden by the UI, but their text is still in the JSON; keep private information out of files committed to this public repository.
-4. Save the browser draft, then download content.json.
-5. Replace data/content.json on your GitHub deployment branch and commit. A host connected to that branch deploys the change. The separate private ChatGPT preview is not connected to GitHub auto-deployment.
+3. Set visibility to Published for an entry that should appear to visitors.
+4. Save the browser draft, then download `content.json`.
+5. Replace `public/data/content.json` on the GitHub deployment branch and commit. The host builds the React app and deploys the change.
 
-Publishing is authorized by GitHub login. No API token or admin password is stored in the public frontend. Browser drafts are local to one browser/device. The editor cannot upload content directly to a server. For direct dashboard publishing, add an authenticated backend or CMS in a separate change.
+Draft entries are hidden by the interface but remain readable in the public JSON. Keep private information out of committed files. The private ChatGPT review copy needs a separate refresh.
+
+Publishing is authorized by GitHub login. The browser editor is public and saves drafts only on that browser/device. It cannot upload directly to a server; it is not a backend admin dashboard. No API token or admin password is stored in the frontend.
 
 ## Badges
 
-The included badge cards are design samples, not earned credentials. To show a real badge, enter its title, issuer, and verification URL, and clear the Sample checkbox. The homepage scrolls from right to left. Hover, keyboard focus, or Pause motion stops the carousel. Reduced-motion preferences disable animation.
+The initial badge cards are samples, not earned credentials. Add a real title, issuer, and verification URL, and clear Sample to show an earned badge. The carousel moves right to left and pauses on hover, keyboard focus, or its pause button. Reduced motion disables animation.
 
-## Business page
+## Business inquiries
 
-The inquiry form prepares an email in the visitor's email application to malingawelagedara523@gmail.com. It does not send messages automatically or store inquiries.
+The planned PSudo IT Solution page is marked Coming soon. Its form opens the visitor's email application addressed to malingawelagedara523@gmail.com; it does not automatically send email or store submissions.
 
-## Run locally
+## Shared navigation and effects
 
-From the repository folder:
+The menu is defined once in `src/components/Navigation.jsx`. All routes use it. At widths of 1240 px and below it becomes a scrollable modal sidebar, with Escape/backdrop dismissal, focus containment, and scroll locking.
 
-    python -m http.server 8000
+The homepage background combines a shield-and-circuit illustration at `public/image/cybersecurity-background.webp` with animated zoom, scan light, code streams, and circuit nodes. Pause background, reduced motion, and hidden tabs suspend animations.
 
-Open http://localhost:8000. A server is required because the portfolio fetches content.json.
-
-## Shared navigation
-
-All HTML pages use navigation.css and navigation.js. The static header and mobile dialog are generated from one menu definition in tools/sync-navigation.py. After changing that definition, run `python tools/sync-navigation.py` from the repository folder. The desktop menu switches to a modal sidebar at widths of 1240 px or below.
-
-## Background and cursor
-
-The homepage background uses background.css and background.js (no video downloads). Pause background stops both the ambient gradients and canvas network. Reduced-motion settings disable animation; animation also pauses in hidden tabs.
-
-Every page loads one shared cursor.css/cursor.js pair. The custom cursor activates only after a mouse move on a fine-pointer device, stays above the fixed menu, and moves inside the native modal sidebar when open. Touch, reduced motion, text fields, and select controls use the native cursor.
-
-The homepage uses image/cybersecurity-background.webp, an AI-generated green/cyan shield and circuit-board illustration. CSS applies a slow zoom/drift and moving scan light. The same Pause background control and reduced-motion preferences stop those image animations.
+One React cursor effect is shared by all pages. It activates only after mouse movement, stays above the header, and enters the sidebar's native top layer. Touch, reduced motion, and form controls retain the native cursor. Route changes and unmounting clean up animation frames, event handlers, and observers.
