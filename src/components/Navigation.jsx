@@ -1,15 +1,16 @@
 import React, { useRef, useEffect } from "react";
+import Icon from "./Icon.jsx";
 import { resolveRoute } from "../lib.js";
 const links = [
   ["Home", "/index.html"],
-  ["About", "/index.html#about"],
+  ["Badges", "/index.html#badges"],
   ["Skills", "/index.html#skills"],
+  ["Experience", "/index.html#experience"],
+  ["About", "/index.html#about"],
   ["Projects", "/projects.html"],
   ["Labs", "/labs.html"],
-  ["Experience", "/index.html#experience"],
-  ["Badges", "/index.html#badges"],
-  ["PSudo IT", "/business/index.html"],
   ["Blog", "/blog.html"],
+  ["PSudo IT", "/business/index.html"],
   ["Contact", "/index.html#contact"],
 ];
 export default function Navigation({ url }) {
@@ -23,6 +24,9 @@ export default function Navigation({ url }) {
   if (["zero-trust", "password-security", "ransomware"].includes(activePage))
     activePage = "blog";
   const close = () => drawer.current?.open && drawer.current.close();
+  useEffect(() => {
+    close();
+  }, [url.href]);
   const closed = () => {
     document.body.style.overflow = overflow.current;
     toggle.current?.setAttribute("aria-expanded", "false");
@@ -40,7 +44,7 @@ export default function Navigation({ url }) {
     };
   }, []);
   const navLinks = () =>
-    links.map(([label, href]) => {
+    links.map(([label, href], index) => {
       const target = new URL(href, url);
       const targetPage = resolveRoute(target.pathname).page;
       const active =
@@ -55,7 +59,11 @@ export default function Navigation({ url }) {
           }
           onClick={close}
         >
-          {label}
+          <span className="nav-number">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span>{label}</span>
+          <Icon className="nav-arrow" />
         </a>
       );
     });
@@ -94,7 +102,7 @@ export default function Navigation({ url }) {
             document.body.style.overflow = "hidden";
           }}
         >
-          <span aria-hidden="true">☰</span> Menu
+          <Icon name="menu" /> <span>Menu</span>
         </button>
       </header>
       <dialog
@@ -115,14 +123,17 @@ export default function Navigation({ url }) {
         }}
       >
         <div className="site-drawer-top">
-          <h2 id="site-drawer-title">Navigation</h2>
+          <div>
+            <p className="drawer-eyebrow">M.T. MALINGA</p>
+            <h2 id="site-drawer-title">Explore the portfolio</h2>
+          </div>
           <form method="dialog">
             <button
               id="site-menu-close"
               type="submit"
               aria-label="Close navigation menu"
             >
-              ✕
+              <Icon name="close" />
             </button>
           </form>
         </div>

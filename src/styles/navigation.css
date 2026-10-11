@@ -270,3 +270,116 @@ body > .container {
     transition: none;
   }
 }
+/* Shared navigation refinement */
+#site-header .nav-number,
+#site-header .nav-arrow {
+  display: none;
+}
+#site-header .site-links a {
+  position: relative;
+  padding: 12px 0 !important;
+}
+#site-header .site-links a[aria-current]::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #77e2db;
+  border-radius: 2px;
+}
+#site-header #site-menu-toggle {
+  border-color: #375166 !important;
+  background: #102435 !important;
+  border-radius: 10px !important;
+}
+#site-menu-toggle svg,
+#site-menu-close svg {
+  width: 18px;
+  height: 18px;
+}
+#site-drawer {
+  width: min(410px, calc(100vw - 16px)) !important;
+  padding: max(22px, env(safe-area-inset-top)) 22px
+    max(24px, env(safe-area-inset-bottom)) !important;
+  background: linear-gradient(160deg, #102333, #091522 65%) !important;
+}
+#site-drawer[open] {
+  animation: drawer-enter 0.22s ease-out;
+}
+#site-drawer::backdrop {
+  animation: backdrop-enter 0.22s ease-out;
+}
+#site-drawer .site-drawer-top {
+  padding-bottom: 22px;
+  border-bottom: 1px solid #294052;
+  margin-bottom: 16px;
+}
+#site-drawer .drawer-eyebrow {
+  color: #77e2db;
+  font: 10px/1.5 monospace;
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+#site-drawer h2 {
+  font-size: 19px !important;
+}
+#site-drawer .site-links a {
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  min-height: 48px !important;
+  font-size: 15px !important;
+}
+#site-drawer .nav-number {
+  font: 10px/1 monospace;
+  color: #57788e;
+  min-width: 18px;
+}
+#site-drawer .nav-arrow {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  opacity: 0.5;
+}
+#site-drawer .site-links a[aria-current] {
+  border-color: #3a766f !important;
+  background: #77e2db10 !important;
+  color: #9bf0e8 !important;
+}
+#site-drawer .site-links a:hover {
+  background: #ffffff06 !important;
+}
+#site-drawer .site-drawer-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@keyframes drawer-enter {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #site-drawer[open],
+  #site-drawer::backdrop {
+    animation: none;
+  }
+}

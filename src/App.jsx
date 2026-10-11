@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useMedia, useRoute } from "./hooks.js";
 import { loadContent, resolveRoute, groups } from "./lib.js";
+import Icon from "./components/Icon.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Background from "./components/Background.jsx";
@@ -105,8 +106,7 @@ export default function App() {
         )}
       </div>
     );
-  else if (route.page === "home")
-    content = <Home data={data} />;
+  else if (route.page === "home") content = <Home data={data} />;
   else if (["projects", "labs"].includes(route.page))
     content = <WorkList key={route.page} kind={route.page} data={data} />;
   else if (route.page === "editor") content = <Editor published={data} />;
@@ -171,26 +171,44 @@ export default function App() {
           {content}
         </main>
         <footer className="shared-footer">
-          <span>
-            © {new Date().getFullYear()} M.T. Malinga · Cyber Security & IT
-          </span>
-          <div>
+          <div className="footer-brand">
+            <strong>M.T. MALINGA</strong>
+            <p>Cyber Security & IT</p>
+            <small>© {new Date().getFullYear()} M.T. Malinga</small>
+          </div>
+          <nav aria-label="Footer navigation" className="footer-pages">
+            <a href="/projects.html">Projects</a>
+            <a href="/labs.html">Lab practicals</a>
+            <a href="/blog.html">Blog</a>
+            <a href="/index.html#contact">Contact</a>
             <a href="/editor.html">Content editor</a>
+          </nav>
+          <nav aria-label="Social and contact links" className="footer-social">
             <a
               href="https://github.com/maliwick"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub ↗
+              <Icon name="github" />
+              GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/thisaramalinga523cyber/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn ↗
+              <Icon name="linkedin" />
+              LinkedIn
             </a>
-          </div>
+            <a href="mailto:malingawelagedara525@gmail.com">
+              <Icon name="mail" />
+              Email
+            </a>
+            <a href="tel:+94752652360">
+              <Icon name="phone" />
+              Phone
+            </a>
+          </nav>
         </footer>
       </div>
       {!loading && <Cursor />}

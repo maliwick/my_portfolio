@@ -43,6 +43,10 @@ test("existing URLs and direct work-detail queries resolve", () => {
     ["/blog-zero-trust.html", "zero-trust"],
     ["/blog-password-security.html", "password-security"],
     ["/blog-ransomware.html", "ransomware"],
+    ["/blog-ransomware", "ransomware"],
+    ["/blog-zero-trust", "zero-trust"],
+    ["/blog-password-security", "password-security"],
+    ["/work", "detail"],
   ])
     assert.equal(resolveRoute(path).page, page);
   const detail = resolveRoute("/work.html", "?type=labs&id=sample-smb");

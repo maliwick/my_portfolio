@@ -25,6 +25,24 @@ test("shared navigation renders complete desktop and sidebar links", async () =>
   assert.equal((html.match(/aria-current="page"/g) || []).length, 2);
   assert(html.includes('aria-controls="site-drawer"'));
   assert(html.includes("Skip to content"));
+  const desktop = html.match(/<nav id="site-desktop".*?<\/nav>/)[0];
+  const labels = [
+    ...desktop.matchAll(
+      /<span>(Home|Badges|Skills|Experience|About|Projects|Labs|Blog|PSudo IT|Contact)<\/span>/g,
+    ),
+  ].map((v) => v[1]);
+  assert.deepEqual(labels, [
+    "Home",
+    "Badges",
+    "Skills",
+    "Experience",
+    "About",
+    "Projects",
+    "Labs",
+    "Blog",
+    "PSudo IT",
+    "Contact",
+  ]);
 });
 test("homepage preserves sections, badge samples, and motion controls", async () => {
   const { default: Home } = await server.ssrLoadModule("/src/pages/Home.jsx");
@@ -50,6 +68,13 @@ test("homepage preserves sections, badge samples, and motion controls", async ()
   assert(html.includes("/projects.html"));
   assert(html.includes("SAMPLE / PLACEHOLDER"));
   assert(!/<a[^>]*><button/.test(html));
+  const contact = html.match(
+    /<section class="contact-section".*?<\/section>/,
+  )[0];
+  assert(!contact.includes("<a "));
+  assert(!contact.includes("<svg"));
+  assert(contact.includes("malingawelagedara525@gmail.com"));
+  assert.equal((html.match(/<h1>/g) || []).length, 1);
 });
 test("business and all blog articles render as React pages", async () => {
   const { default: Business } = await server.ssrLoadModule(
@@ -105,6 +130,21 @@ test("initial visit shows an accessible loader and makes the page inert", async 
     assert(html.includes('aria-label="Loading portfolio"'));
     assert(html.includes('id="site-shell" inert="" aria-busy="true"'));
     assert(html.includes("loading-emblem"));
+    const footer = html.match(/<footer.*?<\/footer>/)[0];
+    assert(footer.includes('aria-label="Footer navigation"'));
+    for (const href of [
+      "/projects.html",
+      "/labs.html",
+      "/blog.html",
+      "/index.html#contact",
+      "/editor.html",
+      "https://github.com/maliwick",
+      "https://www.linkedin.com/in/thisaramalinga523cyber/",
+      "mailto:malingawelagedara525@gmail.com",
+      "tel:+94752652360",
+    ])
+      assert(footer.includes('href="' + href + '"'));
+    assert(!footer.includes('href="#"'));
     const entry = fs.readFileSync(
       new URL("../index.html", import.meta.url),
       "utf8",

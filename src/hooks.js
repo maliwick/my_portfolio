@@ -25,7 +25,7 @@ export function useRoute() {
         e.altKey
       )
         return;
-      const a = e.target.closest("a[href]");
+      const a = e.target?.closest?.("a[href]");
       if (
         !a ||
         a.hasAttribute("download") ||
@@ -36,6 +36,20 @@ export function useRoute() {
       if (next.origin !== location.origin) return;
       if (resolveRoute(next.pathname).page === "not-found") return;
       e.preventDefault();
+      if (next.href === location.href) {
+        let id = next.hash.slice(1);
+        try {
+          id = decodeURIComponent(id);
+        } catch {}
+        const target = document.getElementById(id || "home");
+        target?.scrollIntoView({
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "instant"
+            : "smooth",
+        });
+        if (id === "page-content") target?.focus({ preventScroll: true });
+        return;
+      }
       history.pushState({}, "", next);
       update();
     };

@@ -22,7 +22,7 @@ The planned PSudo IT Solution page is marked Coming soon. Its form opens the vis
 
 ## Shared navigation and effects
 
-The menu is defined once in `src/components/Navigation.jsx`. All routes use it. At widths of 1240 px and below it becomes a scrollable modal sidebar, with Escape/backdrop dismissal, focus containment, and scroll locking.
+The menu is defined once in `src/components/Navigation.jsx`. All routes use it. Its menu order is Home, Badges, Skills, Experience, About, Projects, Labs, Blog, PSudo IT, Contact. Mobile navigation uses numbered full-width links, inline SVG icons, and a scrollable side panel. At widths of 1240 px and below it becomes a scrollable modal sidebar, with Escape/backdrop dismissal, focus containment, and scroll locking.
 
 The homepage background combines a shield-and-circuit illustration at `public/image/cybersecurity-background.webp` with animated zoom, scan light, code streams, and circuit nodes. The background runs automatically; reduced motion and hidden tabs suspend animations.
 
@@ -31,3 +31,7 @@ One React cursor effect is shared by all pages. It activates only after mouse mo
 ## Initial loading screen
 
 The HTML entrypoint includes an immediate animated fallback before React loads. React then displays a cybersecurity shield loader while content and the homepage image load, fades it out, and enables the page. It runs on first visits, refreshes and internal page changes, including work-detail links and browser Back/Forward. Same-page section links do not restart it. After loading, focus moves to the new page content for keyboard navigation. A timeout dismisses the overlay, failed requests show the existing Retry control, and missing images do not block entry. Reduced motion disables loader animation.
+
+## Homepage and footer
+
+The contact section presents plain email, phone and location details without links or icons. The shared footer provides labeled GitHub, LinkedIn, email and phone links, plus project, lab, blog, contact and editor links. Icons are inline SVG and do not depend on an external font. Clicking the current section link scrolls back to that section; clean blog and work URLs are also supported.

@@ -85,6 +85,10 @@ export function resolveRoute(pathname, search = "") {
     "/blog-password-security.html": "password-security",
     "/blog-ransomware.html": "ransomware",
     "/work.html": "detail",
+    "/work": "detail",
+    "/blog-zero-trust": "zero-trust",
+    "/blog-password-security": "password-security",
+    "/blog-ransomware": "ransomware",
   };
   return {
     page: aliases[path] || "not-found",
