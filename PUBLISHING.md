@@ -1,0 +1,33 @@
+# Portfolio content and publishing
+
+- `projects.html`: searchable projects, with full entries at `work.html`.
+- `labs.html`: searchable lab practicals and write-ups.
+- `business/index.html`: PSudo IT Solution, presented as a planned business.
+- `editor.html`: a browser draft editor; it is not a server-authenticated admin dashboard.
+- `data/content.json`: the shared public content source.
+
+## Add your work
+
+1. Open Content editor and create a project, lab practical, or badge.
+2. Enter a summary, tools, date, full write-up, and optional source or verification URL.
+3. Set visibility to Published for items that should appear on the site. Draft entries are hidden by the UI, but their text is still in the JSON; keep private information out of files committed to this public repository.
+4. Save the browser draft, then download content.json.
+5. Replace data/content.json on your GitHub deployment branch and commit. A host connected to that branch deploys the change. The separate private ChatGPT preview is not connected to GitHub auto-deployment.
+
+Publishing is authorized by GitHub login. No API token or admin password is stored in the public frontend. Browser drafts are local to one browser/device. The editor cannot upload content directly to a server. For direct dashboard publishing, add an authenticated backend or CMS in a separate change.
+
+## Badges
+
+The included badge cards are design samples, not earned credentials. To show a real badge, enter its title, issuer, and verification URL, and clear the Sample checkbox. The homepage scrolls from right to left. Hover, keyboard focus, or Pause motion stops the carousel. Reduced-motion preferences disable animation.
+
+## Business page
+
+The inquiry form prepares an email in the visitor's email application to malingawelagedara523@gmail.com. It does not send messages automatically or store inquiries.
+
+## Run locally
+
+From the repository folder:
+
+    python -m http.server 8000
+
+Open http://localhost:8000. A server is required because the portfolio fetches content.json.
