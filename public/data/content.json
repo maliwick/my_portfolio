@@ -1,0 +1,117 @@
+{
+  "projects": [
+    {
+      "id": "roam-ride",
+      "title": "Roam Ride",
+      "summary": "Dynamic itinerary planning for short-duration travel in Sri Lanka.",
+      "tags": [
+        "Flutter",
+        "Python",
+        "Firebase",
+        "Google Maps"
+      ],
+      "body": "An academic mobile app project that recommends destinations within a time budget and adjusts the itinerary as a trip progresses. Google Maps provides routing and estimated travel times.\n\nThe project explores RL and DQN for destination selection, alongside time alerts and GPS path capture for new destinations.",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "online-quiz",
+      "title": "Online Quiz System",
+      "summary": "An academic web project exploring authentication, quizzes, and database integration.",
+      "tags": [
+        "React",
+        "Python",
+        "MySQL"
+      ],
+      "body": "A web-based quiz platform with user authentication and database-backed quiz data. Add screenshots, source links, and verified implementation details as the project documentation develops.",
+      "status": "published",
+      "sample": false
+    },
+    {
+      "id": "arrow-robot",
+      "title": "Colour Arrow Following Robot",
+      "summary": "Computer vision and hardware integration for following black and red arrows.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "Arduino"
+      ],
+      "body": "A collaborative academic robotics project using image processing to identify arrows and control movement.",
+      "status": "published",
+      "sample": false
+    }
+  ],
+  "labs": [
+    {
+      "id": "sample-smb",
+      "title": "SMB Share Access Review",
+      "summary": "Sample write-up layout for documenting anonymous share access in a local lab.",
+      "tags": [
+        "Nmap",
+        "Samba",
+        "Enumeration"
+      ],
+      "date": "",
+      "body": "SAMPLE WRITE-UP \u2014 replace with your reviewed evidence before publishing a real report.\n\nObjective\nEvaluate whether an intentionally vulnerable local lab permits anonymous SMB access.\n\nMethod\nEnumerate exposed SMB services, then verify access using smbclient with anonymous authentication in the authorized environment.\n\nFinding\nAnonymous directory listing demonstrates read access. A scanner result suggesting write access needs a separate safe manual test before it can be claimed as verified.\n\nRemediation\nDisable guest access, restrict share permissions, and limit SMB exposure to trusted networks.\n\nReflection\nRecord the commands, sanitized evidence, limitations, and lessons from the exercise.",
+      "status": "published",
+      "sample": true
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-1",
+      "title": "Lab Explorer",
+      "issuer": "Practice milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-2",
+      "title": "Network Foundations",
+      "issuer": "Learning milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-3",
+      "title": "Web Security",
+      "issuer": "Practice milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-4",
+      "title": "Blue Team Journey",
+      "issuer": "Learning milestone",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    },
+    {
+      "id": "badge-5",
+      "title": "HTB Progress",
+      "issuer": "Profile placeholder",
+      "summary": "Sample design \u2014 not earned",
+      "tags": [],
+      "body": "",
+      "status": "published",
+      "sample": true,
+      "url": ""
+    }
+  ]
+}

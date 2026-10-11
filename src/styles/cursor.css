@@ -1,0 +1,116 @@
+/* Shared cybersecurity reticle; passive and above the navigation's stacking layer. */
+.professional-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none !important;
+  overflow: visible;
+  contain: layout style;
+}
+.professional-cursor[hidden] {
+  display: none !important;
+}
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none !important;
+  will-change: transform;
+}
+.cursor-dot span {
+  display: block;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px;
+  background: #adffd8;
+  box-shadow: 0 0 7px #00ff8844;
+  position: relative;
+}
+.cursor-dot span::before,
+.cursor-dot span::after {
+  content: "";
+  position: absolute;
+  background: #adffd8aa;
+}
+.cursor-dot span::before {
+  width: 11px;
+  height: 1px;
+  left: -4px;
+  top: 1px;
+}
+.cursor-dot span::after {
+  width: 1px;
+  height: 11px;
+  left: 1px;
+  top: -4px;
+}
+.cursor-ring span {
+  --reticle: #54d69faa;
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: -16px;
+  background:
+    linear-gradient(var(--reticle), var(--reticle)) left top/8px 1px no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) left top/1px 8px no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) right top/8px 1px no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) right top/1px 8px no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) left bottom/8px 1px
+      no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) left bottom/1px 8px
+      no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) right bottom/8px 1px
+      no-repeat,
+    linear-gradient(var(--reticle), var(--reticle)) right bottom/1px 8px
+      no-repeat;
+  transition: scale 0.18s ease;
+}
+.cursor-ring span::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed #54d69f44;
+  border-radius: 50%;
+  animation: reticle-scan 10s linear infinite;
+}
+.professional-cursor.is-interactive .cursor-ring span {
+  scale: 1.35;
+  --reticle: #64ddeb;
+}
+.professional-cursor.is-interactive .cursor-ring span::after {
+  border-color: #64ddeb88;
+  animation-duration: 5s;
+}
+.professional-cursor.is-pressed .cursor-ring span {
+  scale: 0.78;
+  --reticle: #c3ffe0;
+}
+@keyframes reticle-scan {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.cursor-active,
+  html.cursor-active body,
+  html.cursor-active body *,
+  html.cursor-active #site-header button,
+  html.cursor-active #site-drawer button {
+    cursor: none !important;
+  }
+  html.cursor-active input,
+  html.cursor-active textarea,
+  html.cursor-active [contenteditable="true"] {
+    cursor: text !important;
+  }
+  html.cursor-active select {
+    cursor: auto !important;
+  }
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .professional-cursor {
+    display: none !important;
+  }
+}
