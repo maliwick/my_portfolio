@@ -30,4 +30,4 @@ One React cursor effect is shared by all pages. It activates only after mouse mo
 
 ## Initial loading screen
 
-The HTML entrypoint includes an immediate animated fallback before React loads. React then displays a cybersecurity shield loader while content and the homepage image load, fades it out, and enables the page. It runs on first visits and refreshes, not internal navigation. A timeout dismisses the overlay, failed requests show the existing Retry control, and missing images do not block entry. Reduced motion disables loader animation.
+The HTML entrypoint includes an immediate animated fallback before React loads. React then displays a cybersecurity shield loader while content and the homepage image load, fades it out, and enables the page. It runs on first visits, refreshes and internal page changes, including work-detail links and browser Back/Forward. Same-page section links do not restart it. After loading, focus moves to the new page content for keyboard navigation. A timeout dismisses the overlay, failed requests show the existing Retry control, and missing images do not block entry. Reduced motion disables loader animation.

@@ -33,12 +33,19 @@ export default function App() {
   const url = useRoute(),
     route = resolveRoute(url.pathname, url.search),
     [data, setData] = useState(null),
-    [loading, setLoading] = useState(true),
+    [loadedPage, setLoadedPage] = useState(null),
     [settled, setSettled] = useState(false),
     [error, setError] = useState(""),
     [paused, setPaused] = useState(false),
     reduced = useMedia("(prefers-reduced-motion: reduce)");
-  const finishLoading = useCallback(() => setLoading(false), []);
+  const pageKey = url.pathname + url.search;
+  const loading = loadedPage !== pageKey;
+  const finishLoading = useCallback(() => {
+    setLoadedPage(pageKey);
+    requestAnimationFrame(() => {
+      document.getElementById("page-content")?.focus({ preventScroll: true });
+    });
+  }, [pageKey]);
   async function reload() {
     setError("");
     try {
@@ -151,6 +158,7 @@ export default function App() {
     <>
       {loading && (
         <LoadingScreen
+          key={pageKey}
           ready={settled}
           home={route.page === "home"}
           onDone={finishLoading}
