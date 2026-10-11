@@ -23,9 +23,13 @@ Open the URL printed by Vite. Use `npm run build` to create `dist/`, `npm run pr
 - `public/image/`: portfolio assets.
 - `tests/`: data, routing, and component-rendering checks.
 
-Existing `.html` links remain supported. The build emits HTML entrypoints for every original page, including `business/index.html`, so refreshing a direct link works on static hosts. `public/_redirects` also enables Cloudflare Pages SPA fallback.
+Existing `.html` links remain supported. The build emits HTML entrypoints for every original page, including `business/index.html`, so refreshing a direct link works on static hosts.
 
 ## Hosting
+
+For Cloudflare Workers Builds, use production branch `main`, build command `npm run build`, deploy command `npx wrangler deploy`, and the repository root as the project root. The committed `wrangler.jsonc` deploys `dist` as static assets to Worker `myportfolio`, enables SPA fallback, and preserves existing `.html` URLs. No Cloudflare Vite plugin or Worker script is required for this static portfolio.
+
+Do not add `/* /index.html 200` to `_redirects`: Workers rejects that catch-all rule as an infinite loop. SPA fallback is configured through `assets.not_found_handling` instead. After a failed deployment, retry against the latest `main` commit.
 
 For Cloudflare Pages or Vercel, set the build command to `npm run build` and output directory to `dist`. Use the repository root as the project root. The private ChatGPT review copy is deployed separately and does not update automatically from GitHub commits.
 
