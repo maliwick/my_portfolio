@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blog.css">
-</head>
+<link rel="stylesheet" href="navigation.css"><script src="navigation.js" defer></script></head>
 <body>
+<!-- SHARED NAV START -->
+<a class="site-skip" href="#page-content">Skip to content</a>
+<header id="site-header"><a class="site-brand" href="index.html"><span class="site-mark" aria-hidden="true">M<span>.</span></span><span>M.T. MALINGA<small>CYBER SECURITY / IT</small></span></a><nav id="site-desktop" class="site-links" aria-label="Main navigation"><a href="index.html" data-site-link>Home</a><a href="index.html#about" data-site-link>About</a><a href="index.html#skills" data-site-link>Skills</a><a href="projects.html" data-site-link>Projects</a><a href="labs.html" data-site-link>Labs</a><a href="index.html#experience" data-site-link>Experience</a><a href="index.html#badges" data-site-link>Badges</a><a href="business/index.html" data-site-link>PSudo IT</a><a href="blog.html" data-site-link>Blog</a><a href="index.html#contact" data-site-link>Contact</a></nav><button id="site-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-drawer"><span aria-hidden="true">☰</span> Menu</button></header>
+<dialog id="site-drawer" aria-labelledby="site-drawer-title"><div class="site-drawer-top"><h2 id="site-drawer-title">Navigation</h2><form method="dialog"><button id="site-menu-close" type="submit" aria-label="Close navigation menu">✕</button></form></div><nav class="site-links" aria-label="Mobile navigation"><a href="index.html" data-site-link>Home</a><a href="index.html#about" data-site-link>About</a><a href="index.html#skills" data-site-link>Skills</a><a href="projects.html" data-site-link>Projects</a><a href="labs.html" data-site-link>Labs</a><a href="index.html#experience" data-site-link>Experience</a><a href="index.html#badges" data-site-link>Badges</a><a href="business/index.html" data-site-link>PSudo IT</a><a href="blog.html" data-site-link>Blog</a><a href="index.html#contact" data-site-link>Contact</a></nav><div class="site-drawer-footer"><a href="https://github.com/maliwick" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/thisaramalinga523cyber/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></dialog>
+<!-- SHARED NAV END -->
     <!-- Sidebar -->
-    <nav class="sidebar">
-        <div class="close-icon" onclick="closeSidebar()">
-            <i class='bx bx-x'></i>
-        </div>
+    
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About</a></li>
@@ -31,40 +33,13 @@
     </nav>
     
     <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    
 
     <!-- Header -->
-    <header>
-        <div class="left">
-            <a href="index.html" class="logo-link cursor-hover">
-                <img src="image/hacker.png" alt="Logo" class="hacker-icon">
-                <h2>Cyber Dev</h2>
-            </a>
-        </div>
-        
-        <ul>
-            <li><a href="index.html" class="cursor-hover">Home</a></li>
-            <li><a href="index.html#about" class="cursor-hover">About</a></li>
-            <li><a href="index.html#skills" class="cursor-hover">Skills</a></li>
-            <li><a href="index.html#projects" class="cursor-hover">Projects</a></li>
-            <li><a href="index.html#experience" class="cursor-hover">Experience</a></li>
-            <li><a href="blog.html" class="cursor-hover">Blog</a></li>
-            <li><a href="index.html#contact" class="cursor-hover">Contact</a></li>
-        </ul>
-        
-        <div class="box-icons">
-            <a href="https://github.com" target="_blank" class="cursor-hover"><i class='bx bxl-github'></i></a>
-            <a href="https://linkedin.com" target="_blank" class="cursor-hover"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://twitter.com" target="_blank" class="cursor-hover"><i class='bx bxl-twitter'></i></a>
-        </div>
-        
-        <div class="menu-icon" onclick="openSidebar()">
-            <i class='bx bx-menu'></i>
-        </div>
-    </header>
+    
     
     <div class="container">
-        <section style="width: 100%; margin-top: 40px;">
+        <section id="page-content" tabindex="-1" style="width: 100%; margin-top: 40px;">
             <div class="blog-detail-container">
                 <a href="blog.html" class="back-link">← Back to Blog</a>
                 
@@ -167,21 +142,6 @@
         <h1>🔒 Cyber Dev | Building Secure Tomorrow</h1>
     </footer>
 
-    <script>
-        function openSidebar() {
-            document.querySelector('.sidebar').classList.add('open');
-            document.getElementById('sidebarOverlay').classList.add('active');
-        }
-
-        function closeSidebar() {
-            document.querySelector('.sidebar').classList.remove('open');
-            document.getElementById('sidebarOverlay').classList.remove('active');
-        }
-
-        // Close sidebar when clicking on a link
-        document.querySelectorAll('.sidebar a').forEach(link => {
-            link.addEventListener('click', closeSidebar);
-        });
-    </script>
+    
 </body>
 </html>

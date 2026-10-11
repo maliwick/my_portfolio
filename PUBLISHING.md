@@ -31,3 +31,7 @@ From the repository folder:
     python -m http.server 8000
 
 Open http://localhost:8000. A server is required because the portfolio fetches content.json.
+
+## Shared navigation
+
+All HTML pages use navigation.css and navigation.js. The static header and mobile dialog are generated from one menu definition in tools/sync-navigation.py. After changing that definition, run `python tools/sync-navigation.py` from the repository folder. The desktop menu switches to a modal sidebar at widths of 1240 px or below.

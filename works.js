@@ -55,7 +55,6 @@
     $('#importContent').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const next=validate(JSON.parse(await f.text()));data=next;reset();persist();}catch(err){status('Import failed: '+err.message);}e.target.value='';});
     $('#reloadContent').addEventListener('click',async()=>{if(!confirm('Replace browser drafts with published content?'))return;try{data=await load();reset();persist();}catch(e){status(e.message);}});list();reset();
   }
-  $('#workMenu')?.addEventListener('click',()=>{$('#workNav').classList.toggle('open');$('#workMenu').setAttribute('aria-expanded',String($('#workNav').classList.contains('open')));});
   load().then(data=>{
     if($('#entryForm')){setupEditor(data);return;}
     document.querySelectorAll('[data-content]').forEach(area=>{const kind=area.dataset.content;const items=data[kind].filter(v=>v.status==='published');const render=()=>{const query=($('#workSearch')?.value||'').toLowerCase();let shown=items.filter(v=>(v.title+' '+v.summary+' '+v.tags.join(' ')).toLowerCase().includes(query));if(area.dataset.limit)shown=shown.slice(0,Number(area.dataset.limit));area.replaceChildren(...shown.map((v,i)=>card(v,kind,i)));if(!shown.length)area.append(el('p','No entries found.','work-empty'));if($('#workCount'))$('#workCount').textContent=shown.length+' '+(kind==='labs'?'lab practicals':'projects');};render();$('#workSearch')?.addEventListener('input',render);});

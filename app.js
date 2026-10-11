@@ -3,83 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - initializing mobile menu...');
-    
-    // Get elements
-    const menuIcon = document.querySelector('.menu-icon');
-    const closeIcon = document.querySelector('.close-icon');
-    const sidebar = document.querySelector('.sidebar');
-    const body = document.body;
-    
-    // Debug: Check if elements exist
-    console.log('Menu elements found:', {
-        menuIcon: !!menuIcon,
-        closeIcon: !!closeIcon,
-        sidebar: !!sidebar
-    });
-    
-    // Create overlay for mobile
-    const overlay = document.createElement('div');
-    overlay.className = 'sidebar-overlay';
-    document.body.appendChild(overlay);
-    
-    // ========== SIDEBAR FUNCTIONS ==========
-    function openSidebar() {
-        console.log('Opening sidebar');
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
-        body.style.overflow = 'hidden';
-    }
-    
-    function closeSidebar() {
-        console.log('Closing sidebar');
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-        body.style.overflow = '';
-    }
-    
-    // ========== EVENT LISTENERS ==========
-    // Open sidebar when menu icon is clicked
-    if (menuIcon) {
-        menuIcon.addEventListener('click', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            openSidebar();
-        });
-    }
-    
-    // Close sidebar when close icon is clicked
-    if (closeIcon) {
-        closeIcon.addEventListener('click', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            closeSidebar();
-        });
-    }
-    
-    // Close sidebar when overlay is clicked
-    if (overlay) {
-        overlay.addEventListener('click', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            closeSidebar();
-        });
-    }
-    
-    // Close sidebar when clicking on links
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            closeSidebar();
-        });
-    });
-    
-    // Close sidebar with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-            closeSidebar();
-        }
-    });
+
     
     // ========== SMOOTH SCROLLING ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -95,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 
                 // Close sidebar if open
-                closeSidebar();
+
                 
                 // Calculate scroll position
                 const header = document.querySelector('header');
@@ -117,36 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         openFormBtn.addEventListener('click', function() {
             const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe7ljXMh9tY1eUcDzJSzB5jk_IT38F61FSNP3DHEGJW70o3vg/viewform';
             window.open(formUrl, '_blank');
-        });
-    }
-    
-    // ========== HEADER SCROLL EFFECT ==========
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
-    
-    if (header) {
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Add/remove background on scroll
-            if (scrollTop > 50) {
-                header.style.backgroundColor = 'rgba(16, 16, 32, 0.95)';
-                header.style.backdropFilter = 'blur(20px)';
-            } else {
-                header.style.backgroundColor = 'rgba(16, 16, 32, 0.9)';
-                header.style.backdropFilter = 'blur(10px)';
-            }
-            
-            // Hide/show header on scroll
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down - hide header
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                // Scrolling up - show header
-                header.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollTop = scrollTop;
         });
     }
     
@@ -193,18 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== RESIZE HANDLER ==========
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            // Auto-close sidebar on desktop
-            if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
-                closeSidebar();
-            }
-        }, 250);
-    });
-    
     // ========== INITIALIZE AOS ==========
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -217,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    console.log('✅ Mobile menu initialized successfully');
+
     console.log('✅ Header visible:', !!document.querySelector('header'));
     console.log('✅ Container visible:', !!document.querySelector('.container'));
 });
