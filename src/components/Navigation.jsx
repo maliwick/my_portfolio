@@ -44,7 +44,7 @@ export default function Navigation({ url }) {
     };
   }, []);
   const navLinks = () =>
-    links.map(([label, href], index) => {
+    links.map(([label, href]) => {
       const target = new URL(href, url);
       const targetPage = resolveRoute(target.pathname).page;
       const active =
@@ -59,11 +59,7 @@ export default function Navigation({ url }) {
           }
           onClick={close}
         >
-          <span className="nav-number">
-            {String(index + 1).padStart(2, "0")}
-          </span>
           <span>{label}</span>
-          <Icon className="nav-arrow" />
         </a>
       );
     });
@@ -132,7 +128,7 @@ export default function Navigation({ url }) {
         <div className="site-drawer-top">
           <div>
             <p className="drawer-eyebrow">M.T. MALINGA</p>
-            <h2 id="site-drawer-title">Explore the portfolio</h2>
+            <h2 id="site-drawer-title">Portfolio directory</h2>
           </div>
           <form method="dialog">
             <button
@@ -144,6 +140,7 @@ export default function Navigation({ url }) {
             </button>
           </form>
         </div>
+        <p className="drawer-section-label">NAVIGATION</p>
         <nav className="site-links" aria-label="Mobile navigation">
           {navLinks()}
         </nav>
@@ -156,14 +153,14 @@ export default function Navigation({ url }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub ↗
+            GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/thisaramalinga523cyber/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn ↗
+            LinkedIn
           </a>
         </div>
       </dialog>

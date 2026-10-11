@@ -271,10 +271,6 @@ body > .container {
   }
 }
 /* Shared navigation refinement */
-#site-header .nav-number,
-#site-header .nav-arrow {
-  display: none;
-}
 #site-header .site-links a {
   position: relative;
   padding: 12px 0 !important;
@@ -335,17 +331,6 @@ body > .container {
   min-height: 48px !important;
   font-size: 15px !important;
 }
-#site-drawer .nav-number {
-  font: 10px/1 monospace;
-  color: #57788e;
-  min-width: 18px;
-}
-#site-drawer .nav-arrow {
-  width: 16px;
-  height: 16px;
-  margin-left: auto;
-  opacity: 0.5;
-}
 #site-drawer .site-links a[aria-current] {
   border-color: #3a766f !important;
   background: #77e2db10 !important;
@@ -382,4 +367,94 @@ body > .container {
   #site-drawer::backdrop {
     animation: none;
   }
+}
+
+/* Terminal-inspired sidebar: quiet grid, clear hierarchy, and readable controls. */
+#site-drawer {
+  width: min(390px, calc(100vw - 16px)) !important;
+  padding-inline: 24px !important;
+  border-left: 1px solid #2b6658 !important;
+  background:
+    linear-gradient(#71efc305 1px, transparent 1px),
+    linear-gradient(90deg, #71efc305 1px, transparent 1px),
+    radial-gradient(ellipse at top right, #143b32 0%, transparent 55%),
+    #081411 !important;
+  background-size: 28px 28px, 28px 28px, auto, auto !important;
+  box-shadow: -20px 0 80px #0009 !important;
+}
+#site-drawer .site-drawer-top {
+  align-items: flex-start;
+  border-bottom-color: #244b40;
+  padding-block: 8px 24px;
+  margin-bottom: 24px;
+}
+#site-drawer .drawer-eyebrow {
+  color: #79e6be;
+  font: 11px/1.6 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0.13em;
+  margin-bottom: 8px;
+}
+#site-drawer h2 {
+  font-size: clamp(18px, 5vw, 23px) !important;
+  letter-spacing: -0.03em;
+}
+#site-drawer .drawer-section-label {
+  color: #829e92;
+  font: 10px/1.6 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0.18em;
+  margin: 0 0 12px 14px;
+}
+#site-drawer .site-links { gap: 6px !important; }
+#site-drawer .site-links a {
+  position: relative;
+  color: #bdcec6 !important;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 14px !important;
+  letter-spacing: 0.02em !important;
+  padding: 13px 16px !important;
+  border-radius: 7px !important;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+#site-drawer .site-links a:hover {
+  color: #a4f5d3 !important;
+  border-color: #2b5446 !important;
+  background: #74e9b90b !important;
+}
+#site-drawer .site-links a[aria-current] {
+  color: #b2ffdc !important;
+  border-color: #366a55 !important;
+  background: linear-gradient(90deg, #69edac18, #69edac06) !important;
+}
+#site-drawer .site-links a[aria-current]::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 3px;
+  background: #7df5b7;
+  box-shadow: 0 0 10px #7df5b755;
+}
+#site-drawer #site-menu-close {
+  background: #0d211a !important;
+  border-color: #345447 !important;
+  border-radius: 7px !important;
+  padding: 10px !important;
+}
+#site-drawer #site-menu-close:hover { border-color: #79e6be !important; }
+#site-drawer .site-drawer-footer {
+  border-top-color: #244b40;
+  margin-top: 24px;
+  padding-top: 18px;
+  gap: 8px 20px;
+}
+#site-drawer .site-drawer-footer a {
+  color: #9fb9ad !important;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px !important;
+}
+#site-drawer .site-drawer-footer a:hover { color: #a4f5d3 !important; }
+@media (prefers-reduced-motion: reduce) {
+  #site-drawer .site-links a { transition: none; }
 }

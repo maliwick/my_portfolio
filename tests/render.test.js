@@ -23,6 +23,9 @@ test("shared navigation renders complete desktop and sidebar links", async () =>
   assert.equal((html.match(/aria-current="page"/g) || []).length, 2);
   assert(html.includes('aria-controls="site-drawer"'));
   assert(html.includes("Skip to content"));
+  assert(!html.includes("nav-number"));
+  assert(!html.includes("nav-arrow"));
+  assert(html.includes("Portfolio directory"));
   const desktop = html.match(/<nav id="site-desktop".*?<\/nav>/)[0];
   const labels = [
     ...desktop.matchAll(
