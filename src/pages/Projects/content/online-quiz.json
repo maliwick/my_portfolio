@@ -1,0 +1,13 @@
+{
+  "id": "online-quiz",
+  "title": "Online Quiz System",
+  "summary": "An academic web project exploring authentication, quizzes, and database integration.",
+  "tags": [
+    "React",
+    "Python",
+    "MySQL"
+  ],
+  "body": "A web-based quiz platform with user authentication and database-backed quiz data. Add screenshots, source links, and verified implementation details as the project documentation develops.",
+  "status": "published",
+  "sample": false
+}

@@ -24,7 +24,7 @@ export default function Business() {
               {"Discuss a future inquiry "}
               <span>{"\u2197"}</span>
             </a>
-            <a className={"button secondary"} href={"/projects.html"}>
+            <a className={"button secondary"} href={"/projects/"}>
               {"Explore my work"}
             </a>
           </div>

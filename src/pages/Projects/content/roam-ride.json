@@ -1,0 +1,14 @@
+{
+  "id": "roam-ride",
+  "title": "Roam Ride",
+  "summary": "Dynamic itinerary planning for short-duration travel in Sri Lanka.",
+  "tags": [
+    "Flutter",
+    "Python",
+    "Firebase",
+    "Google Maps"
+  ],
+  "body": "An academic mobile app project that recommends destinations within a time budget and adjusts the itinerary as a trip progresses. Google Maps provides routing and estimated travel times.\n\nThe project explores RL and DQN for destination selection, alongside time alerts and GPS path capture for new destinations.",
+  "status": "published",
+  "sample": false
+}

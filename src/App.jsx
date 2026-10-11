@@ -9,15 +9,16 @@ import Cursor from "./components/Cursor.jsx";
 import { WorkDetail } from "./components/Content.jsx";
 import Home from "./pages/Home.jsx";
 import Business from "./pages/Business.jsx";
-import WorkList from "./pages/WorkList.jsx";
-import Admin from "./pages/Admin.jsx";
+import Labs from "./pages/Labs/index.jsx";
+import Badges from "./pages/Badges/index.jsx";
+import Projects from "./pages/Projects/index.jsx";
+import Blogs from "./pages/Blogs/index.jsx";
 import Search from "./pages/Search.jsx";
 const titles = {
   home: "Malinga Portfolio",
   projects: "Projects",
   labs: "Lab practicals",
   business: "PSudo IT Solution",
-  admin: "Admin dashboard",
   search: "Portfolio search",
   badges: "Badges",
   blog: "Cybersecurity Blog",
@@ -116,8 +117,7 @@ export default function App() {
     );
   else if (route.page === "home") content = <Home data={data} />;
   else if (["projects", "labs", "badges", "blog"].includes(route.page))
-    content = <WorkList key={route.page} kind={route.page} data={data} />;
-  else if (route.page === "admin") content = <Admin onPublished={reload} />;
+    content = React.createElement({ labs: Labs, badges: Badges, projects: Projects, blog: Blogs }[route.page], { data });
   else if (route.page === "search") content = <Search data={data} />;
   else if (route.page === "business") content = <Business />;
   else if (
@@ -133,7 +133,7 @@ export default function App() {
         ) : (
           <>
             <h1>Article not found</h1>
-            <a href="/blog.html">View blog</a>
+            <a href="/blogs/">View blog</a>
           </>
         )}
       </div>
@@ -153,7 +153,7 @@ export default function App() {
           <>
             <h1>Entry not found</h1>
             <p>This entry may be a draft or no longer available.</p>
-            <a href="/projects.html">View projects</a>
+            <a href="/projects/">View projects</a>
           </>
         )}
       </div>
@@ -188,7 +188,6 @@ export default function App() {
               "badges",
               "blog",
               "search",
-              "admin",
               "detail",
               "not-found",
             ].includes(route.page)
@@ -206,12 +205,11 @@ export default function App() {
             <small>© {new Date().getFullYear()} M.T. Malinga</small>
           </div>
           <nav aria-label="Footer navigation" className="footer-pages">
-            <a href="/projects.html">Projects</a>
-            <a href="/labs.html">Lab practicals</a>
-            <a href="/blog.html">Blog</a>
+            <a href="/projects/">Projects</a>
+            <a href="/labs/">Lab practicals</a>
+            <a href="/blogs/">Blog</a>
             <a href="/index.html#contact">Contact</a>
             <a href="/search.html">Search portfolio</a>
-            <a href="/admin.html">Admin Dashboard</a>
           </nav>
           <nav aria-label="Social and contact links" className="footer-social">
             <a

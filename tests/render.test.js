@@ -9,19 +9,17 @@ const server = await createServer({
   appType: "custom",
 });
 after(() => server.close());
-const content = JSON.parse(
-  fs.readFileSync(new URL("../data/seed.json", import.meta.url)),
-);
+const content = Object.fromEntries(Object.entries({labs:"Labs",badges:"Badges",projects:"Projects",blog:"Blogs"}).map(([kind,folder]) => [kind, fs.readdirSync(new URL(`../src/pages/${folder}/content/`, import.meta.url)).filter(name=>name.endsWith(".json")).map(name => JSON.parse(fs.readFileSync(new URL(`../src/pages/${folder}/content/${name}`, import.meta.url))))]));
 test("shared navigation renders complete desktop and sidebar links", async () => {
   const { default: Navigation } = await server.ssrLoadModule(
     "/src/components/Navigation.jsx",
   );
   const html = renderToStaticMarkup(
     React.createElement(Navigation, {
-      url: new URL("https://example.com/labs.html"),
+      url: new URL("https://example.com/labs/"),
     }),
   );
-  assert.equal((html.match(/href="\/labs.html"/g) || []).length, 2);
+  assert.equal((html.match(/href="\/labs\/"/g) || []).length, 2);
   assert.equal((html.match(/aria-current="page"/g) || []).length, 2);
   assert(html.includes('aria-controls="site-drawer"'));
   assert(html.includes("Skip to content"));
@@ -65,7 +63,7 @@ test("homepage preserves sections, badge samples, and motion controls", async ()
   ])
     assert(html.includes('id="' + id + '"'));
   assert(!html.includes("Pause background"));
-  assert(html.includes("/projects.html"));
+  assert(html.includes("/projects/"));
   assert(html.includes("SAMPLE / PLACEHOLDER"));
   assert(!/<a[^>]*><button/.test(html));
   const contact = html.match(
@@ -132,12 +130,11 @@ test("initial visit shows an accessible loader and makes the page inert", async 
     const footer = html.match(/<footer.*?<\/footer>/)[0];
     assert(footer.includes('aria-label="Footer navigation"'));
     for (const href of [
-      "/projects.html",
-      "/labs.html",
-      "/blog.html",
+      "/projects/",
+      "/labs/",
+      "/blogs/",
       "/index.html#contact",
       "/search.html",
-      "/admin.html",
       "https://github.com/maliwick",
       "https://www.linkedin.com/in/thisaramalinga523cyber/",
       "mailto:malingawelagedara525@gmail.com",

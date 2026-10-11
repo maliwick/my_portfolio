@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { groups, publicItems } from "../lib.js";
+import { groups, publicItems, entryUrl } from "../lib.js";
 import { Tags, Sample } from "../components/Content.jsx";
 export default function Search({ data }) {
   const [query, setQuery] = useState(""),
@@ -16,7 +16,7 @@ export default function Search({ data }) {
       <p className="work-lead">
         Browse projects, lab practicals, badges and blog articles.
       </p>
-      <div className="admin-filters">
+      <div className="search-filters">
         <label>
           Search portfolio
           <input
@@ -55,7 +55,7 @@ export default function Search({ data }) {
             <Tags tags={v.tags} />
             <a
               href={
-                "/work.html?type=" + v.kind + "&id=" + encodeURIComponent(v.id)
+                entryUrl(v.kind, v.id)
               }
             >
               Read more ↗

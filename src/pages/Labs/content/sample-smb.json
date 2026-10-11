@@ -1,0 +1,14 @@
+{
+  "id": "sample-smb",
+  "title": "SMB Share Access Review",
+  "summary": "Sample write-up layout for documenting anonymous share access in a local lab.",
+  "tags": [
+    "Nmap",
+    "Samba",
+    "Enumeration"
+  ],
+  "date": "",
+  "body": "SAMPLE WRITE-UP — replace with your reviewed evidence before publishing a real report.\n\nObjective\nEvaluate whether an intentionally vulnerable local lab permits anonymous SMB access.\n\nMethod\nEnumerate exposed SMB services, then verify access using smbclient with anonymous authentication in the authorized environment.\n\nFinding\nAnonymous directory listing demonstrates read access. A scanner result suggesting write access needs a separate safe manual test before it can be claimed as verified.\n\nRemediation\nDisable guest access, restrict share permissions, and limit SMB exposure to trusted networks.\n\nReflection\nRecord the commands, sanitized evidence, limitations, and lessons from the exercise.",
+  "status": "published",
+  "sample": true
+}

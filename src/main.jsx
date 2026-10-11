@@ -11,7 +11,7 @@ import "./styles/background.css";
 import "./styles/react.css";
 import "./styles/loading.css";
 import "./styles/home.css";
-import "./styles/admin.css";
+import "./styles/search.css";
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />

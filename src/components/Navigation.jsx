@@ -3,13 +3,13 @@ import Icon from "./Icon.jsx";
 import { resolveRoute } from "../lib.js";
 const links = [
   ["Home", "/index.html"],
-  ["Badges", "/index.html#badges"],
+  ["Badges", "/badges/"],
   ["Skills", "/index.html#skills"],
   ["Experience", "/index.html#experience"],
   ["About", "/index.html#about"],
-  ["Projects", "/projects.html"],
-  ["Labs", "/labs.html"],
-  ["Blog", "/blog.html"],
+  ["Projects", "/projects/"],
+  ["Labs", "/labs/"],
+  ["Blog", "/blogs/"],
   ["PSudo IT", "/business/index.html"],
   ["Contact", "/index.html#contact"],
 ];
@@ -20,7 +20,7 @@ export default function Navigation({ url }) {
   const route = resolveRoute(url.pathname, url.search);
   let activePage = route.page;
   if (activePage === "detail")
-    activePage = route.params.get("type") === "labs" ? "labs" : "projects";
+    activePage = route.params.get("type");
   if (["zero-trust", "password-security", "ransomware"].includes(activePage))
     activePage = "blog";
   const close = () => drawer.current?.open && drawer.current.close();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { publicItems } from "../lib.js";
-import { WorkGrid } from "../components/Content.jsx";
+import { WorkGrid } from "./Content.jsx";
 export default function WorkList({ kind, data }) {
   const [query, setQuery] = useState("");
   const title = {

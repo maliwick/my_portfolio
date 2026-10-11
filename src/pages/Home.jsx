@@ -47,7 +47,7 @@ export default function Home({ data }) {
             along the way.
           </p>
           <div className="hero-buttons">
-            <a href="/projects.html" className="hero-link">
+            <a href="/projects/" className="hero-link">
               View projects <Icon />
             </a>
             <a href="/index.html#contact" className="hero-link secondary">
@@ -73,12 +73,12 @@ export default function Home({ data }) {
           </h2>
           <p>Networks · Systems · Applications</p>
           <div className="focus-links">
-            <a href="/projects.html">
+            <a href="/projects/">
               <strong>{projects.length}</strong>
               <span>Published projects</span>
               <Icon />
             </a>
-            <a href="/labs.html">
+            <a href="/labs/">
               <strong>{labs.filter((v) => !v.sample).length}</strong>
               <span>Published lab practicals</span>
               <Icon />
@@ -192,7 +192,7 @@ export default function Home({ data }) {
             <p className="work-kicker">BUILD / EXPLORE / DOCUMENT</p>
             <h2>My work, in practice.</h2>
           </div>
-          <a className="work-button" href="/projects.html">
+          <a className="work-button" href="/projects/">
             All projects <Icon />
           </a>
         </div>
@@ -207,7 +207,7 @@ export default function Home({ data }) {
               Exercises, findings, and lessons from authorized lab environments.
             </p>
           </div>
-          <a className="work-button" href="/labs.html">
+          <a className="work-button" href="/labs/">
             Explore lab practicals <Icon />
           </a>
         </div>

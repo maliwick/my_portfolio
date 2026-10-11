@@ -1,5 +1,4 @@
 export const groups = ["projects", "labs", "badges", "blog"];
-export const draftKey = "malinga-content-drafts-v1";
 export function safeUrl(value) {
   try {
     const u = new URL(value);
@@ -41,23 +40,11 @@ export function validateContent(data) {
   return data;
 }
 export async function loadContent() {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
-  try {
-    const r = await fetch("/api/content", {
-      cache: "no-cache",
-      signal: controller.signal,
-    });
-    if (!r.ok) throw new Error("Content could not be loaded.");
-    return validateContent(await r.json());
-  } catch (error) {
-    if (controller.signal.aborted)
-      throw new Error("Content loading timed out. Please retry.");
-    throw error;
-  } finally {
-    clearTimeout(timeout);
-  }
+  const { default: content } = await import("./content.js");
+  return validateContent(content);
 }
+export const categoryUrl = (kind) => "/" + (kind === "blog" ? "blogs" : kind) + "/";
+export const entryUrl = (kind, id) => categoryUrl(kind) + encodeURIComponent(id) + "/";
 export function publicItems(items, query = "") {
   const q = query.toLowerCase();
   return items.filter(
@@ -77,10 +64,6 @@ export function resolveRoute(pathname, search = "") {
     "/projects.html": "projects",
     "/labs": "labs",
     "/labs.html": "labs",
-    "/editor": "admin",
-    "/editor.html": "admin",
-    "/admin": "admin",
-    "/admin.html": "admin",
     "/search": "search",
     "/search.html": "search",
     "/badges": "badges",
@@ -98,6 +81,13 @@ export function resolveRoute(pathname, search = "") {
     "/blog-password-security": "password-security",
     "/blog-ransomware": "ransomware",
   };
+  const nested = path.match(/^\/(labs|badges|projects|blogs)(?:\/(.*))?$/);
+  if (nested) {
+    const kind = nested[1] === "blogs" ? "blog" : nested[1];
+    const slug = (nested[2] || "").replace(/\/index\.html$/, "");
+    if (!slug || slug === "index.html") return { page: kind, params: new URLSearchParams(search) };
+    if (/^[a-zA-Z0-9_-]+$/.test(slug)) return { page: "detail", params: new URLSearchParams({type:kind,id:slug}) };
+  }
   return {
     page: aliases[path] || "not-found",
     params: new URLSearchParams(search),

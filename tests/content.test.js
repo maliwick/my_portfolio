@@ -6,10 +6,10 @@ import {
   publicItems,
   safeUrl,
   resolveRoute,
+  categoryUrl,
+  entryUrl,
 } from "../src/lib.js";
-const content = JSON.parse(
-  fs.readFileSync(new URL("../data/seed.json", import.meta.url)),
-);
+const content = Object.fromEntries(Object.entries({labs:"Labs",badges:"Badges",projects:"Projects",blog:"Blogs"}).map(([kind,folder]) => [kind, fs.readdirSync(new URL(`../src/pages/${folder}/content/`, import.meta.url)).filter(name=>name.endsWith(".json")).map(name => JSON.parse(fs.readFileSync(new URL(`../src/pages/${folder}/content/${name}`, import.meta.url))))]));
 test("public search excludes drafts and searches tools", () => {
   const data = structuredClone(content);
   data.projects.push({ ...data.projects[0], id: "hidden", status: "draft" });
@@ -37,7 +37,7 @@ test("existing URLs and direct work-detail queries resolve", () => {
     ["/index.html", "home"],
     ["/projects.html", "projects"],
     ["/labs.html", "labs"],
-    ["/editor.html", "admin"],
+    ["/editor.html", "not-found"],
     ["/business/index.html", "business"],
     ["/blog.html", "blog"],
     ["/blog-zero-trust.html", "zero-trust"],
@@ -52,4 +52,20 @@ test("existing URLs and direct work-detail queries resolve", () => {
   const detail = resolveRoute("/work.html", "?type=labs&id=sample-smb");
   assert.equal(detail.params.get("id"), "sample-smb");
   assert.equal(resolveRoute("/missing").page, "not-found");
+});
+
+test("every folder entry has a working category and detail route", () => {
+  for (const [kind, entries] of Object.entries(content)) {
+    assert.equal(resolveRoute(categoryUrl(kind)).page, kind);
+    assert.equal(resolveRoute(categoryUrl(kind) + "index.html").page, kind);
+    for (const entry of entries) {
+      for (const suffix of ["", "index.html"]) {
+        const route = resolveRoute(entryUrl(kind, entry.id) + suffix);
+        assert.equal(route.page, "detail");
+        assert.equal(route.params.get("type"), kind);
+        assert.equal(route.params.get("id"), entry.id);
+      }
+    }
+  }
+  for (const path of ["/admin", "/admin.html", "/editor.html"]) assert.equal(resolveRoute(path).page, "not-found");
 });

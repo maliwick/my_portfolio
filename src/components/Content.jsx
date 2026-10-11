@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { safeUrl } from "../lib.js";
+import { safeUrl, entryUrl, categoryUrl } from "../lib.js";
 export function ExternalLink({ url, children }) {
   const href = safeUrl(url);
   return href ? (
@@ -45,7 +45,7 @@ export function WorkGrid({ items, kind }) {
             <Tags tags={v.tags} />
             <a
               href={
-                "/work.html?type=" + kind + "&id=" + encodeURIComponent(v.id)
+                entryUrl(kind, v.id)
               }
             >
               {kind === "projects" ? "Explore project ↗" : "Read more ↗"}
@@ -61,7 +61,7 @@ export function WorkGrid({ items, kind }) {
 export function WorkDetail({ entry, kind, preview = false }) {
   return (
     <article className="work-detail">
-      {!preview && <a href={"/" + kind + ".html"}>← Back to {kind}</a>}
+      {!preview && <a href={categoryUrl(kind)}>← Back to {kind}</a>}
       <p className="work-kicker">{kind.toUpperCase()}</p>
       <Sample entry={entry} />
       <h1>{entry.title}</h1>
@@ -90,7 +90,7 @@ export function BadgeCarousel({ badges }) {
             ◇
           </div>
           <Sample entry={v} />
-          <strong>{v.title}</strong>
+          <strong><a href={entryUrl("badges", v.id)} tabIndex={clone ? -1 : undefined}>{v.title}</a></strong>
           <small>{v.issuer}</small>
           {safeUrl(v.url) && (
             <a

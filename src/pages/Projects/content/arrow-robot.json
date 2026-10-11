@@ -1,0 +1,13 @@
+{
+  "id": "arrow-robot",
+  "title": "Colour Arrow Following Robot",
+  "summary": "Computer vision and hardware integration for following black and red arrows.",
+  "tags": [
+    "Python",
+    "OpenCV",
+    "Arduino"
+  ],
+  "body": "A collaborative academic robotics project using image processing to identify arrows and control movement.",
+  "status": "published",
+  "sample": false
+}

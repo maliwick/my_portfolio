@@ -4,12 +4,6 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application",
-    "html_handling": "none",
-    "binding": "ASSETS",
-    "run_worker_first": [
-      "/api/*",
-      "/data/content.json"
-    ]
-  },
-  "main": "worker/index.js"
+    "html_handling": "none"
+  }
 }
